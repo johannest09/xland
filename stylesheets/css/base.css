@@ -1,0 +1,291 @@
+/**
+ * xland.is responsive design
+ *
+ * @copyright (c) 2012
+ * @author Johannes Freyr Þorleifsson
+ */
+/**
+ * CSS Reset by Eric Mayer v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+ * ------------------------------------------------------------------------------------------------ */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/**
+ * Grid System
+ * ------------------------------------------------------------------------------------------------ */
+/** config **/
+.clearfix {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.wrap {
+  margin: 0 auto;
+}
+.row:after,
+.clr:after,
+.group:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.row {
+  margin-bottom: 20px;
+}
+.col {
+  display: block;
+  float: left;
+  margin-left: 2%;
+}
+.col:first-child {
+  margin-left: 0;
+}
+.col-1 {
+  width: 6.48%;
+  display: block;
+  float: left;
+  margin-left: 2%;
+}
+.col-1:first-child {
+  margin-left: 0;
+}
+.col-2 {
+  width: 14.96%;
+  display: block;
+  float: left;
+  margin-left: 2%;
+}
+.col-2:first-child {
+  margin-left: 0;
+}
+.col-3 {
+  width: 23.44%;
+  display: block;
+  float: left;
+  margin-left: 2%;
+}
+.col-3:first-child {
+  margin-left: 0;
+}
+.col-4 {
+  width: 31.92%;
+  display: block;
+  float: left;
+  margin-left: 2%;
+}
+.col-4:first-child {
+  margin-left: 0;
+}
+.col-5 {
+  width: 40.400000000000006%;
+  display: block;
+  float: left;
+  margin-left: 2%;
+}
+.col-5:first-child {
+  margin-left: 0;
+}
+.col-6 {
+  width: 48.88%;
+  display: block;
+  float: left;
+  margin-left: 2%;
+}
+.col-6:first-child {
+  margin-left: 0;
+}
+.col-7 {
+  width: 57.36%;
+  display: block;
+  float: left;
+  margin-left: 2%;
+}
+.col-7:first-child {
+  margin-left: 0;
+}
+.col-8 {
+  width: 65.84%;
+  display: block;
+  float: left;
+  margin-left: 2%;
+}
+.col-8:first-child {
+  margin-left: 0;
+}
+.col-9 {
+  width: 74.32000000000001%;
+  display: block;
+  float: left;
+  margin-left: 2%;
+}
+.col-9:first-child {
+  margin-left: 0;
+}
+.col-10 {
+  width: 82.80000000000001%;
+  display: block;
+  float: left;
+  margin-left: 2%;
+}
+.col-10:first-child {
+  margin-left: 0;
+}
+.col-11 {
+  width: 91.28%;
+  display: block;
+  float: left;
+  margin-left: 2%;
+}
+.col-11:first-child {
+  margin-left: 0;
+}
+.col-12 {
+  width: 99.76%;
+  display: block;
+  float: left;
+  margin-left: 2%;
+}
+.col-12:first-child {
+  margin-left: 0;
+}
+.row,
+.clr,
+.group {
+  zoom: 1;
+}
+*:first-child + html .row,
+*:first-child + html .clr,
+*:first-child + html .group {
+  zoom: 1;
+}
+/**
+ * LESS Elements (http://lesselements.com)
+ * ------------------------------------------------------------------------------------------------ */
+/**
+ * Font packages
+ * ------------------------------------------------------------------------------------------------ */
