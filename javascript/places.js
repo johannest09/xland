@@ -1,4 +1,4 @@
-var stofur = [
+[
 	{
 		"name" : "Landslag",
 		"address" : "Skólavörðustíg 11",
@@ -35,4 +35,4 @@ var stofur = [
 		"logo" : ""
 	}
 	
-];
+]
