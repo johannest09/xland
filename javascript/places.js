@@ -1,14 +1,15 @@
 [
 	{
 		"name" : "Landslag",
-		"address" : "Skólavörðustíg 11",
+		"address" : "Skólavörðustígur 11",
 		"postal" : 101,
 		"tel" : "535 5300",
 		"Fax" : "535 5301",
-		"markers": [{"lat": 64.145279, "lng": -21.930992}],
+		"markers": {"lat": 64.1451984, "lng": -21.9309914 },
 		"url" : "www.landslag.is",
 		"description" : "Landslag er flott stofa",
-		"logo" : ""
+		"logo" : "",
+		"id" : "landslag"
 	},
 	{
 		"name" : "Forma ehf",
@@ -17,10 +18,11 @@
 		"tel" : "587 5020",
 		"fax" : "587 5020",
 		"email" : "ingarut@forma.is",
-		"markers": [{"lat": 64.14578, "lng": -21.903054}],
+		"markers": {"lat": 64.1457109, "lng": -21.9030365 },
 		"url" : "www.forma.is",
 		"description" : "Forma er flott stofa",
-		"logo" : ""
+		"logo" : "",
+		"id" : "forma"
 	},
 	{
 		"name" : "Hornsteinar arkitektar ehf",
@@ -29,10 +31,76 @@
 		"tel" : "511 7011",
 		"fax" : "511 7001",
 		"email" : "hornsteinar@hornsteinar.is",
-		"markers": [{"lat": 64.147829, "lng": -21.932923}],
+		"markers": {"lat": 64.147235, "lng": -21.9330078 },
 		"url" : "www.hornsteinar.is",
 		"description" : "Forma er flott stofa",
-		"logo" : ""
+		"logo" : "",
+		"id" : "hornsteinar"
+	},
+	{
+		"name" : "Landark ehf, Teiknistofa",
+		"address" : "Stórhöfði 17",
+		"postal" : 110,
+		"tel" : "567 7737",
+		"fax" : "567 7736",
+		"email" : "landark@landark.is",
+		"markers": {"lat": 64.1283951, "lng": -21.8096643 },
+		"url" : "www.landark.is",
+		"description" : "Forma er flott stofa",
+		"logo" : "",
+		"id" : "landmark"
+	},
+	{
+		"name" : "Landmótun slf",
+		"address" : "Hamraborg 12",
+		"postal" : 200,
+		"tel" : "554 5300",
+		"fax" : "554 5360",
+		"email" : "landmotun@landmotun.is",
+		"markers": {"lat": 64.1122527, "lng": -21.9052448 },
+		"url" : "www.landmotun.is",
+		"description" : "Forma er flott stofa",
+		"logo" : "",
+		"id" : "landmotun"
+	},
+	{
+		"name" : "Kanon arkitektar ehf",
+		"address" : "Laugavegur 26",
+		"postal" : 101,
+		"tel" : "512 4200",
+		"fax" : "",
+		"email" : "kanon@kanon.is",
+		"markers": {"lat": 64.144592, "lng": -21.921636 },
+		"url" : "www.landmotun.is",
+		"description" : "Forma er flott stofa",
+		"logo" : "",
+		"id" : "kanon"
+	},
+	{
+		"name" : "Skipulag og hönnun ehf",
+		"address" : "Byggðarendi 13",
+		"postal" : 108,
+		"tel" : "561 5655",
+		"fax" : "",
+		"email" : "ghlins@islandia.is",
+		"markers": {"lat": 64.1214538, "lng":  -21.8530067 },
+		"url" : "",
+		"description" : "Forma er flott stofa",
+		"logo" : "",
+		"id" : "skipulag-og-honnun"
+	},
+	{
+		"name" : "Suðaustanátta landslagsarkitektúr",
+		"address" : "Laugavegur 63",
+		"postal" : 101,
+		"tel" : "561 6609",
+		"fax" : "561 6601",
+		"email" : "egg@simnet.is",
+		"markers": {"lat": 64.1442383, "lng": -21.9218016 },
+		"url" : "",
+		"description" : "Forma er flott stofa",
+		"logo" : "",
+		"id" : "sudaustanatta"
 	}
-	
+
 ]

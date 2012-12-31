@@ -10,6 +10,7 @@ var defaultZoom = 13;
 var defaultLatlng = new google.maps.LatLng(64.138621,-21.894722);
 var infowindow;
 var markerList = {};
+var map;
 
 var xland = {
 	
@@ -72,7 +73,7 @@ var xland = {
 			mapTypeId: MY_MAPTYPE_ID
 			
 		};
-		var map = new google.maps.Map(document.getElementById("map-container"), myOptions);
+		map = new google.maps.Map(document.getElementById("map-container"), myOptions);
 
 		// create new info window for marker detail pop-up
 		infowindow = new google.maps.InfoWindow();
@@ -85,34 +86,31 @@ var xland = {
 		
 		map.mapTypes.set(MY_MAPTYPE_ID, jayzMapType);
 
-		return map;
 	},
 
 	loadMarkers : function()
 	{
 		console.log("test1");
+		var that = this;
 
 		$.getJSON("./javascript/places.js", function(data) {
 			// loop through all markers
-			console.log(data)
-			$.each(data.markers, function(i, item){
-
-				// add marker to the map
-				//loadMarker(item);
-				console.log(item);
+			$.each(data, function(i, item) {
+				that.loadMarker(item);
 			});
 		});
 	},
 
 	loadMarker : function(markerData)
 	{
-		var myLatlng = new google.maps.LatLng(markerData['lat'],markerData['lng']);
-
+		var that = this;
+		var myLatlng = new google.maps.LatLng(markerData.markers['lat'],markerData.markers['lng']);
+		
 		// create new marker
 		var marker = new google.maps.Marker({
-		    id: markerData['name'],
+		    id: markerData["id"],
 		    map: map,
-		    title: markerData['name'] ,
+		    title: markerData["name"] ,
 		    position: myLatlng
 		});
 
@@ -124,14 +122,16 @@ var xland = {
 		google.maps.event.addListener(marker, 'click', function() {
 	 
 			// show marker when clicked
-			showMarker(marker.id);
+			that.showMarker(marker.id);
 		});
 
 		// add event when marker window is closed to reset map location
+		
 		google.maps.event.addListener(infowindow,'closeclick', function() {
 			map.setCenter(defaultLatlng);
 			map.setZoom(defaultZoom);
 		});
+		
 	},
 
 	showMarker : function(markerId)
