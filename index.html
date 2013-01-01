@@ -13,8 +13,8 @@
 		
 		<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
 		
-		<link rel="stylesheet" type="text/css" href="stylesheets/css/main.css" />
-		<link rel="stylesheet" type="text/css" href="stylesheets/css/responsive.css" />
+		<link rel="stylesheet" type="text/css" href="stylesheets/less/main.css" />
+		<!--link rel="stylesheet" type="text/css" href="stylesheets/less/responsive.css" /-->
 		
 		
 		
@@ -40,20 +40,19 @@
 		<section id="map">
 			<div class="row">
 				<div class="wrap">
-					<div class="filter">
-						<ul>
-							<li><a href="javascript:void(0);">Almenningsrými</a></li>
-							<li><a href="javascript:void(0);">Samkeppnir</a></li>
-							<li><a href="javascript:void(0);">Skipulag</a></li>
-							<li><a href="javascript:void(0);">Landslagsarkitektar</a></li>
-						</ul>
-						<div class="list-toggle">
-							<a href="javascript:void(0);">
-								<span class="show-filters no-display">Sýna flokka<span></span></span>
-								<span class="hide-filters">Fela flokka<span></span></span>
-							</a>
+					<div class="dropdown-menu-wrapper">
+						<div class="dropdown-menu" tabindex="1"><span>Flokkar</span>
+							<div class="dropdown">
+								<ul>
+									<li><a href="javascript:void(0);">Almenningsrými</a></li>
+									<li><a href="javascript:void(0);">Samkeppnir</a></li>
+									<li><a href="javascript:void(0);">Skipulag</a></li>
+									<li><a href="javascript:void(0);">Landslagsarkitektar</a></li>
+								</ul>
+							</div>
 						</div>
 					</div>
+
 				</div>
 				<div id="map-container"></div>
 			</div>

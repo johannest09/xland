@@ -9,8 +9,11 @@
 var defaultZoom = 13;
 var defaultLatlng = new google.maps.LatLng(64.138621,-21.894722);
 var infowindow;
-var markerList = {};
+var markerList = [];
 var map;
+var mapStyle = "/mapstyle.js";
+
+var categories = ["Almenningsrými", "Samkeppnir", "Skipulag", "Landslagsarkitektar"];
 
 var xland = {
 	
@@ -19,57 +22,30 @@ var xland = {
 		/* styles */
 
 		var MY_MAPTYPE_ID = 'reykjavikMap';
-		
-		var styles = [
-		  {
-		    "featureType": "landscape",
-		    "stylers": [
-		      { "color": "#d5d6d6" },
-		      { "weight": 0.1 }
-		    ]
-		  },{
-		    "featureType": "road.highway",
-		    "stylers": [
-		      { "color": "#5b5b5b" }
-		    ]
-		  },{
-		    "featureType": "road.arterial",
-		    "stylers": [
-		      { "color": "#bfc1c2" }
-		    ]
-		  },{
-		    "featureType": "road.local",
-		    "stylers": [
-		      { "color": "#ffffff" }
-		    ]
-		  },{
-		    "featureType": "water",
-		    "stylers": [
-		      { "color": "#a1a1a1" }
-		    ]
-		  },{
-		    "featureType": "poi.park",
-		    "stylers": [
-		      { "saturation": -100 }
-		    ]
-		  },{
-		    "featureType": "poi",
-		    "stylers": [
-		      { "hue": "#77ff00" },
-		      { "lightness": -12 },
-		      { "saturation": -58 }
-		    ]
-		  }
-		];
-		
+		var stylesArray = [];
+
+		// load map styles
+
+		$.getJSON("./javascript/mapstyle.js", function(data) {
+			$.each(data, function(i, item) {
+				stylesArray[i] = item;
+			});
+		});
 		
 		var myOptions = {
 			center: defaultLatlng,
 		 	zoom: 13,
-		 	/* mapTypeId: google.maps.MapTypeId.ROADMAP, */
+		 	panControl: false,
+		 	zoomControl: true,
+		 	streetViewControl: false,
+		 	mapTypeControl: true,
 			mapTypeControlOptions: {
-				mapTypeIds: [google.maps.MapTypeId.ROADMAP, MY_MAPTYPE_ID]
+				mapTypeIds: [google.maps.MapTypeId.ROADMAP, MY_MAPTYPE_ID],
+				style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
 			},
+			zoomControlOptions: {
+      			style: google.maps.ZoomControlStyle.SMALL
+    		},
 			mapTypeId: MY_MAPTYPE_ID
 			
 		};
@@ -82,21 +58,25 @@ var xland = {
 			name: 'X-land'
         };
 
-		var jayzMapType = new google.maps.StyledMapType(styles, styledMapOptions);
+		var xlandMapType = new google.maps.StyledMapType(stylesArray, styledMapOptions);
 		
-		map.mapTypes.set(MY_MAPTYPE_ID, jayzMapType);
+		map.mapTypes.set(MY_MAPTYPE_ID, xlandMapType);
 
 	},
 
-	loadMarkers : function()
+	//Todo: add a category as a parameter
+	loadMarkers : function(category)
 	{
-		console.log("test1");
 		var that = this;
 
 		$.getJSON("./javascript/places.js", function(data) {
 			// loop through all markers
 			$.each(data, function(i, item) {
-				that.loadMarker(item);
+				if(item["category"] == category)
+				{
+					that.loadMarker(item);
+				}
+				
 			});
 		});
 	},
@@ -105,13 +85,15 @@ var xland = {
 	{
 		var that = this;
 		var myLatlng = new google.maps.LatLng(markerData.markers['lat'],markerData.markers['lng']);
-		
+		var image = '../images/marker_stofur.png';
+
 		// create new marker
 		var marker = new google.maps.Marker({
 		    id: markerData["id"],
 		    map: map,
 		    title: markerData["name"] ,
-		    position: myLatlng
+		    position: myLatlng,
+		    icon: image
 		});
 
 		// add marker to list used later to get content and additional marker information
@@ -155,6 +137,25 @@ var xland = {
 		}
 	},
 
+	dropdown : function()
+	{
+		$(".dropdown-menu").bind("click", function(){
+
+			$(this).toggleClass("active");
+			event.stopPropagation();
+		});
+	},
+
+	deleteMarkers : function()
+	{
+		if(markerList)
+		{
+			for (i in markerList) {
+     			markerList[i].setMap(map);
+    		}
+		}
+	},
+
 
 	setMarker : function(map, locations)
 	{
@@ -173,8 +174,18 @@ var xland = {
 $(document).ready(function(){
 	
 	var theMap = xland.init();
-	var mapLocations = null;
-	xland.loadMarkers();
+	
+	xland.dropdown();
+
+	var category = "Landslagsarkitektar";
+
+	$(".dropdown ul li a").bind("click", function(){
+		category = $(this).text();
+		xland.deleteMarkers();
+		xland.loadMarkers(category);
+	});
+
+	xland.loadMarkers(category);
 
 	//xland.setMarker(theMap, mapLocations);
 });

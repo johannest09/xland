@@ -9,7 +9,8 @@
 		"url" : "www.landslag.is",
 		"description" : "Landslag er flott stofa",
 		"logo" : "",
-		"id" : "landslag"
+		"id" : "landslag",
+		"category" : "Landslagsarkitektar"
 	},
 	{
 		"name" : "Forma ehf",
@@ -22,7 +23,9 @@
 		"url" : "www.forma.is",
 		"description" : "Forma er flott stofa",
 		"logo" : "",
-		"id" : "forma"
+		"id" : "forma",
+		"category" : "Landslagsarkitektar"
+
 	},
 	{
 		"name" : "Hornsteinar arkitektar ehf",
@@ -35,7 +38,8 @@
 		"url" : "www.hornsteinar.is",
 		"description" : "Forma er flott stofa",
 		"logo" : "",
-		"id" : "hornsteinar"
+		"id" : "hornsteinar",
+		"category" : "Landslagsarkitektar"
 	},
 	{
 		"name" : "Landark ehf, Teiknistofa",
@@ -48,7 +52,8 @@
 		"url" : "www.landark.is",
 		"description" : "Forma er flott stofa",
 		"logo" : "",
-		"id" : "landmark"
+		"id" : "landmark",
+		"category" : "Landslagsarkitektar"
 	},
 	{
 		"name" : "Landmótun slf",
@@ -61,7 +66,8 @@
 		"url" : "www.landmotun.is",
 		"description" : "Forma er flott stofa",
 		"logo" : "",
-		"id" : "landmotun"
+		"id" : "landmotun",
+		"category" : "Landslagsarkitektar"
 	},
 	{
 		"name" : "Kanon arkitektar ehf",
@@ -74,7 +80,8 @@
 		"url" : "www.landmotun.is",
 		"description" : "Forma er flott stofa",
 		"logo" : "",
-		"id" : "kanon"
+		"id" : "kanon",
+		"category" : "Landslagsarkitektar"
 	},
 	{
 		"name" : "Skipulag og hönnun ehf",
@@ -87,7 +94,8 @@
 		"url" : "",
 		"description" : "Forma er flott stofa",
 		"logo" : "",
-		"id" : "skipulag-og-honnun"
+		"id" : "skipulag-og-honnun",
+		"category" : "Samkeppnir"
 	},
 	{
 		"name" : "Suðaustanátta landslagsarkitektúr",
@@ -100,7 +108,8 @@
 		"url" : "",
 		"description" : "Forma er flott stofa",
 		"logo" : "",
-		"id" : "sudaustanatta"
+		"id" : "sudaustanatta",
+		"category" : "Samkeppnir"
 	}
 
 ]
