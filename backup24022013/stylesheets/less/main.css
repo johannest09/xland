@@ -1,0 +1,558 @@
+/**
+ * xland.is responsive design
+ *
+ * @copyright (c) 2012
+ * @author Johannes Freyr Þorleifsson
+ */
+
+/**
+ * CSS Reset by Eric Mayer v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+ * ------------------------------------------------------------------------------------------------ */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/**
+ * Grid System
+ * ------------------------------------------------------------------------------------------------ */
+/** config **/
+.clearfix {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.wrap {
+  margin: 0 auto;
+}
+.row:after,
+.clr:after,
+.group:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.row {
+  margin-bottom: 20px;
+}
+.col {
+  display: block;
+  float: left;
+  margin-left: 2%;
+}
+.col:first-child {
+  margin-left: 0;
+}
+.col-1 {
+  width: 6.48%;
+  display: block;
+  float: left;
+  margin-left: 2%;
+}
+.col-1:first-child {
+  margin-left: 0;
+}
+.col-2 {
+  width: 14.96%;
+  display: block;
+  float: left;
+  margin-left: 2%;
+}
+.col-2:first-child {
+  margin-left: 0;
+}
+.col-3 {
+  width: 23.44%;
+  display: block;
+  float: left;
+  margin-left: 2%;
+}
+.col-3:first-child {
+  margin-left: 0;
+}
+.col-4 {
+  width: 31.92%;
+  display: block;
+  float: left;
+  margin-left: 2%;
+}
+.col-4:first-child {
+  margin-left: 0;
+}
+.col-5 {
+  width: 40.4%;
+  display: block;
+  float: left;
+  margin-left: 2%;
+}
+.col-5:first-child {
+  margin-left: 0;
+}
+.col-6 {
+  width: 48.88%;
+  display: block;
+  float: left;
+  margin-left: 2%;
+}
+.col-6:first-child {
+  margin-left: 0;
+}
+.col-7 {
+  width: 57.36%;
+  display: block;
+  float: left;
+  margin-left: 2%;
+}
+.col-7:first-child {
+  margin-left: 0;
+}
+.col-8 {
+  width: 65.84%;
+  display: block;
+  float: left;
+  margin-left: 2%;
+}
+.col-8:first-child {
+  margin-left: 0;
+}
+.col-9 {
+  width: 74.32%;
+  display: block;
+  float: left;
+  margin-left: 2%;
+}
+.col-9:first-child {
+  margin-left: 0;
+}
+.col-10 {
+  width: 82.8%;
+  display: block;
+  float: left;
+  margin-left: 2%;
+}
+.col-10:first-child {
+  margin-left: 0;
+}
+.col-11 {
+  width: 91.28%;
+  display: block;
+  float: left;
+  margin-left: 2%;
+}
+.col-11:first-child {
+  margin-left: 0;
+}
+.col-12 {
+  width: 99.76%;
+  display: block;
+  float: left;
+  margin-left: 2%;
+}
+.col-12:first-child {
+  margin-left: 0;
+}
+.row,
+.clr,
+.group {
+  zoom: 1;
+}
+*:first-child + html .row,
+*:first-child + html .clr,
+*:first-child + html .group {
+  zoom: 1;
+}
+/**
+ * LESS Elements (http://lesselements.com)
+ * ------------------------------------------------------------------------------------------------ */
+/**
+ * Font packages
+ * ------------------------------------------------------------------------------------------------ */
+
+/* font settings */
+
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+/* filter dropdown */
+/* graphics */
+body {
+  font-family: "Droid Sans", helvetica, arial, sans-serif;
+  color: #1a170e;
+  font-size: 75%;
+}
+body .no-display {
+  display: none;
+}
+body .wrap {
+  width: 960px;
+  margin: 0 auto;
+}
+body a {
+  text-decoration: none;
+}
+body p {
+  margin: 0 0 10px;
+}
+body h1 {
+  font-size: 2em;
+}
+body header {
+  height: 90px;
+  z-index: 3;
+  position: relative;
+  -webkit-box-shadow: 0px 6px 4px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 6px 4px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 6px 4px 0px rgba(0, 0, 0, 0.2);
+}
+body header .header-content {
+  padding: 10px 0 25px;
+  height: 90px;
+}
+body header .header-content .row {
+  margin: 0;
+}
+body header .header-content .row .logo {
+  margin-top: 15px;
+}
+body header .header-content .row .logo h1 {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+body header .header-content .row .logo .subheader {
+  font-size: 1.3em;
+  color: #5f5f5f;
+}
+body header .header-content .row .fila {
+  float: right;
+}
+body section#map {
+  color: #666677;
+  width: 100%, height: 550px;
+}
+body section#map .row > .wrap {
+  position: relative;
+}
+body section#map .filter {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 216px;
+  z-index: 1;
+}
+body section#map .filter ul {
+  width: 216px;
+  float: left;
+  overflow: hidden;
+  -webkit-transition: all all 1s ease-out;
+  -moz-transition: all all 1s ease-out;
+  transition: all all 1s ease-out;
+}
+body section#map .filter ul li {
+  width: 212px;
+  float: left;
+  margin: 0 2px;
+  background: #2f2f2f;
+  border-bottom: 1px solid #626262;
+  -webkit-box-shadow: 0 0 1px #2f2f2f;
+  -moz-box-shadow: 0 0 1px #2f2f2f;
+  box-shadow: 0 0 1px #2f2f2f;
+}
+body section#map .filter ul li a {
+  display: block;
+  width: 192px;
+  height: 40px;
+  float: left;
+  padding: 9px 5px 9px 15px;
+  color: white;
+  line-height: 40px;
+  font-size: 1.18em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+body section#map .filter .list-toggle {
+  width: 212px;
+  margin: 0 2px;
+}
+body section#map .filter .list-toggle a {
+  display: block;
+  width: 192px;
+  height: 25px;
+  float: left;
+  padding: 9px 5px 9px 15px;
+  color: white;
+  line-height: 25px;
+  font-size: 1.18em;
+  font-weight: 700;
+  cursor: pointer;
+  background: #2f2f2f;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #2f2f2f), color-stop(1, #5f5f5f));
+  background: -ms-linear-gradient(bottom, #2f2f2f, #5f5f5f);
+  background: -moz-linear-gradient(center bottom, #2f2f2f 0, #5f5f5f 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5f5f5f', endColorstr='#2f2f2f', GradientType=0);
+}
+body section#map .dropdown-menu-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 100;
+}
+body section#map .dropdown-menu {
+  position: relative;
+  width: 200px;
+  margin: 15px auto;
+  padding: 12px 10px;
+  /* Styles */
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+body section#map .dropdown-menu span {
+  font-size: 16px;
+}
+body section#map .dropdown-menu.active {
+  border-radius: 5px 5px 0 0;
+  background: #4cbeff;
+  box-shadow: none;
+  border-bottom: none;
+  color: white;
+}
+body section#map .dropdown-menu.active :after {
+  border-color: #82d1ff transparent;
+}
+body section#map .dropdown-menu.active .dropdown {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  max-height: 400px;
+}
+body section#map .dropdown-menu:after {
+  /* Little arrow */
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  margin-top: -3px;
+  border-width: 6px 6px 0 6px;
+  border-style: solid;
+  border-color: #4cbeff transparent;
+}
+body section#map .dropdown-menu .dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  /* Styles */
+  background: white;
+  border-radius: 0 0 5px 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-top: none;
+  border-bottom: none;
+  list-style: none;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  /* Hiding */
+  max-height: 0;
+  overflow: hidden;
+}
+body section#map .dropdown-menu .dropdown li {
+  padding: 0 10px ;
+}
+body section#map .dropdown-menu .dropdown li a {
+  display: block;
+  text-decoration: none;
+  color: #333333;
+  padding: 10px 0;
+  transition: all 0.3s ease-out;
+  border-bottom: 1px solid #e6e8ea;
+}
+body section#map .dropdown-menu .dropdown li :last-of-type a {
+  border: none;
+}
+body section#map .dropdown-menu .dropdown li:hover a {
+  color: #57a9d9;
+}
+body section#map #map-container {
+  width: 100%;
+  height: 550px;
+  float: left;
+  background: #c4ac64;
+}
+body article.content-below {
+  margin: 40px 0;
+  font-size: 1.168em;
+  line-height: 1.5em;
+  color: #666677;
+}
+body article.content-below h1 {
+  padding: 0 10px 20px;
+  margin-bottom: 15px;
+  font-size: 1.5em;
+  line-height: 24px;
+  color: #1a170e;
+  border-bottom: 1px solid #626262;
+}
+body article.content-below .intro p {
+  padding: 0 10px;
+}
+body article.content-below a.fila {
+  display: block;
+  float: right;
+}
+body footer {
+  height: 50px;
+  background: #cccccc;
+  font-size: 0.917em;
+}
+body footer .google-copyright,
+body footer .social-media {
+  padding: 15px 0;
+}
+body footer .google-copyright > span {
+  float: left;
+}
+body footer ul.legal-list {
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+body footer ul.legal-list li {
+  float: left;
+  margin: 0 0 0 10px;
+}
+body footer ul.legal-list li a {
+  color: #1a170e;
+  text-decoration: underline;
+}

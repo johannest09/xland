@@ -14,9 +14,13 @@
 		<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
 		
 		<link rel="stylesheet" type="text/css" href="stylesheets/less/main.css" />
+
+		<link rel="stylesheet" type="text/css" href="stylesheets/less/jquery.fancybox.css?v=2.1.3"  media="screen" />
+		<link rel="stylesheet" type="text/css" href="stylesheets/less/jquery.fancybox-buttons.css?v=1.0.5" media="screen" />
+		<link rel="stylesheet" type="text/css" href="stylesheets/less/jquery.fancybox-thumbs.css?v=1.0.7" media="screen" />
+
+
 		<!--link rel="stylesheet" type="text/css" href="stylesheets/less/responsive.css" /-->
-		
-		
 		
 	</head>
 	
@@ -31,7 +35,13 @@
 								<div class="subheader">landslagsarkitektúr á höfuðborgarsvæðinu</div>
 							</div>
 						</div>
-						<div class="col-6"></div>
+						<div class="col-6">
+							<a href="http://www.fila.is" class="fila">
+								<img class="fila-logo" src="images/fila-logo-greyscale.jpg" title="Heimasíða FILA"></img>
+							</a>
+							<!--a class="fancybox" rel="group" href="/images/marker_activities.png"><img src="../images/marker_activities.png" alt=""/></a-->
+
+						</div>
 					</div>
 					
 				</div>
@@ -44,10 +54,11 @@
 						<div class="dropdown-menu" tabindex="1"><span>Flokkar</span>
 							<div class="dropdown">
 								<ul>
-									<li><a href="javascript:void(0);">Almenningsrými</a></li>
-									<li><a href="javascript:void(0);">Samkeppnir</a></li>
-									<li><a href="javascript:void(0);">Skipulag</a></li>
-									<li><a href="javascript:void(0);">Landslagsarkitektar</a></li>
+									<li><a href="javascript:void(0);" rel="Allt">Allt</a></li>
+									<li><a href="javascript:void(0);" rel="Almenningsrymi">Almenningsrými</a></li>
+									<li><a href="javascript:void(0);" rel="Samkeppnir">Samkeppnir</a></li>
+									<li><a href="javascript:void(0);" rel="Skipulag">Skipulag</a></li>
+									<li><a href="javascript:void(0);" rel="Landslagsarkitektar">Landslagsarkitektar</a></li>
 								</ul>
 							</div>
 						</div>
@@ -68,9 +79,7 @@
 						</div>
 					</div>
 					<div class="col-4">
-						<a href="http://www.fila.is" class="fila">
-							<img class="fila-logo" src="images/fila-logo.png" title="Heimasíða FILA"></img>
-						</a>
+						
 					</div>
 				</div>
 			</div>
@@ -99,6 +108,12 @@
 		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCe-U-BLvwE6b8biTRNaYPmboqbJhrlhpU&sensor=true"></script>
 		
 		<script src="javascript/scripts.js" type="text/javascript"></script>
+
+		<script type="text/javascript" src="javascript/jquery.fancybox.pack.js?v=2.1.3"></script>
+		<script type="text/javascript" src="javascript/jquery.fancybox-buttons.js?v=1.0.5"></script>
+		<script type="text/javascript" src="javascript/jquery.fancybox-media.js?v=1.0.5"></script>
+		<script type="text/javascript" src="javascript/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
 			
 	</body>
 </html>

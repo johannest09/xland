@@ -1,0 +1,222 @@
+
+@import "base.less";
+
+/* font settings */
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+@font-color-main: #1a170e;
+@font-main: "Droid Sans", helvetica, arial, sans-serif;
+@font-size-main: 75%;
+@font-color-map: #667;
+
+/* filter dropdown */
+@filter-background: #2f2f2f;
+@filter-sep: #626262;
+
+/* graphics */
+@border-main: 1px solid #626262;
+
+/* =============================================================================
+    Sprites & graphics
+   ========================================================================== */
+
+@spriteGrid: 32px;
+@spritePath: '/library/Template/Sprites/sprite.png';
+
+.sprite(@x, @y, @w: @spriteGrid, @h: @spriteGrid) {
+    &:before, .inner-icon {
+       background-position: -(@x*@spriteGrid) -(@y*@spriteGrid);
+       width:@w;
+       height:@h;
+    }
+}
+.hideText {text-indent: -9999px; font-size:0; white-space: nowrap; }
+
+.spriteGenerate {
+    &:before, .inner-icon {
+        margin-top: 1px; 
+        margin-right: 10px;
+        background: url(@spritePath) no-repeat; 
+        content: "";
+        display:inline-block;
+    }
+}
+
+
+body { font-family: @font-main; color: @font-color-main; font-size: @font-size-main;
+	.no-display { display: none; }
+	.wrap { width: 960px; margin: 0 auto; }
+	a { text-decoration: none; }
+	p { margin: 0 0 10px; }
+	h1 { font-size: 2em; }
+	
+	header { height: 90px; z-index: 3; position: relative; .box-shadow(0px 6px 4px 0px rgba(0,0,0,0.2));
+		.header-content { padding: 10px 0 25px; height: 90px;
+			.row { margin: 0; 
+				.logo { margin-top: 15px; 
+					h1 { font-weight: 700; margin-bottom: 8px; }
+					.subheader { font-size: 1.3em; color: #5F5F5F; }
+				}
+				.fila { float: right; }
+			}
+		}
+	}
+	
+	section#map { color: @font-color-map; width: 100%, height: 550px;
+		.row > .wrap { position: relative; }
+		.filter { position: absolute; left: 0; top: 0; width: 216px; z-index: 1;
+			ul { width: 216px; float: left; overflow: hidden; .transition (all 1s); 
+				li { width: 212px; float:left; margin: 0 2px; background: @filter-background; border-bottom: 1px solid @filter-sep; .box-shadow(0 0 1px @filter-background);
+					a { display: block; width: 192px; height: 40px; float: left; padding: 9px 5px 9px 15px; color: #fff; line-height: 40px; font-size: 1.18em; font-weight: 700; text-transform: uppercase; }
+				}
+			}
+			.list-toggle { width: 212px; margin: 0 2px; 
+				a { display: block; width: 192px; height: 25px; float: left; padding: 9px 5px 9px 15px; color: #fff; line-height: 25px; font-size: 1.18em; font-weight: 700; cursor: pointer; .gradient(@filter-background, @filter-background, #5F5F5F );
+					span { 
+						
+					} 
+				}
+			}
+		}
+		.dropdown-menu-wrapper {
+			position: absolute; left: 0; top: 0; z-index: 100;
+		}
+		.dropdown-menu {  		
+			position: relative;
+		    width: 200px;
+		    margin: 15px auto;
+		    padding: 12px 10px;
+
+		    /* Styles */
+		    background: #fff;
+		    border-radius: 5px;
+		    box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+		    cursor: pointer;
+		    outline: none;
+		    -webkit-transition: all 0.3s ease-out;
+		    -moz-transition: all 0.3s ease-out;
+		    -ms-transition: all 0.3s ease-out;
+		    -o-transition: all 0.3s ease-out;
+		    transition: all 0.3s ease-out;
+
+		    span {
+		    	font-size: 16px;
+		    }
+
+			&.active {
+				border-radius: 5px 5px 0 0;
+			    background: #4CBEFF;
+			    box-shadow: none;
+			    border-bottom: none;
+			    color: white;
+
+			    :after {
+			    	border-color: #82d1ff transparent;
+			    }
+
+			    .dropdown {
+					border-bottom: 1px solid rgba(0,0,0,0.2);
+				    max-height: 400px;
+			    }
+			}
+
+			&:after { /* Little arrow */
+				content: "";
+			    width: 0;
+			    height: 0;
+			    position: absolute;
+			    top: 20px;
+			    right: 15px;
+			    margin-top: -3px;
+			    border-width: 6px 6px 0 6px;
+			    border-style: solid;
+			    border-color: #4cbeff transparent;
+			}
+			.dropdown {  
+				position: absolute;
+			    top: 100%;
+			    left: 0;
+			    right: 0;
+
+			    /* Styles */
+			    background: #fff;
+			    border-radius: 0 0 5px 5px;
+			    border: 1px solid rgba(0,0,0,0.2);
+			    border-top: none;
+			    border-bottom: none;
+			    list-style: none;
+			    -webkit-transition: all 0.3s ease-out;
+			    -moz-transition: all 0.3s ease-out;
+			    -ms-transition: all 0.3s ease-out;
+			    -o-transition: all 0.3s ease-out;
+			    transition: all 0.3s ease-out;
+
+			    /* Hiding */
+			    max-height: 0;
+			    overflow: hidden;
+
+			    li { padding: 0 10px ;
+			    	a {
+			    		display: block;
+					    text-decoration: none;
+					    color: #333;
+					    padding: 10px 0;
+					    transition: all 0.3s ease-out;
+					    border-bottom: 1px solid #e6e8ea;
+			    	}
+			    	:last-of-type a { 
+			    		border: none;
+			    	}
+			    	&:hover a { color: #57a9d9; }
+			    }
+			}
+		}
+
+
+		#map-container { width: 100%; height: 550px; float: left; background: #C4AC64; }
+	}
+	
+	article.content-below { margin: 40px 0; font-size: 1.168em; line-height: 1.5em; color: @font-color-map; 
+		h1 { padding: 0 10px 20px; margin-bottom: 15px; font-size: 1.5em; line-height: 24px; color: @font-color-main; border-bottom: @border-main; }
+		.intro {
+			p { padding: 0 10px; }
+		}
+		a.fila { display: block; float: right;
+			img { }
+		}
+	}
+	footer { height: 50px; background: #ccc; font-size: 0.917em;
+		.google-copyright, .social-media { padding: 15px 0;}
+		.google-copyright > span { float: left; }
+		ul.legal-list { float: left; margin: 0; padding: 0; 
+			li { float: left; margin: 0 0 0 10px; 
+				a { color: @font-color-main; text-decoration: underline; }
+			}
+		}
+	
+	}
+
+	&.data-upload {
+		
+		header .headercontent { padding: 20px 0 0 60px; }
+
+		.form-container { margin: 40px 20px 20px 60px; 
+
+			.new-item { display: block; width: 150px; margin-bottom: 30px; padding: 5px 15px; text-decoration: none; color: #fff; font-weight: bold; font-size: 18px; background: #34366B;
+				&:after { content:"+"; padding-left: 5px; }
+			}
+
+			form { display: none;
+
+				.formfield { margin-bottom: 20px;
+				 	label { width: 100px; float: left; display: block; }
+				}
+				input[type="submit"] { padding: 5px 15px; }
+			}
+		}
+
+		.json-data { padding: 40px 20px 0 20px; border-left: 1px solid #ccc; min-height: 800px;
+			h2 { margin-bottom: 20px; }
+		}
+		
+	}
+}
