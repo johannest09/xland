@@ -132,7 +132,7 @@ var xland = {
 		        success: function(result) {
 		                	//console.log(result);
 		                	var data = $.parseJSON(result);
-							var html = '<div class="infowindow"><h2>' + data['project']['project_name'] + '</h2><img src="../images/thumbs/' + data['image'] + '" class="marker-image"></img><p>' + data['project']['abstract'] + '</p><a href="javascript:void(0);" rel="' + data['project']['id'] + '" title="Nánar um verkefni" class="more">Skoða verkefni</a> </div>';
+							var html = '<div class="infowindow"><h2>' + data['project']['project_name'] + '</h2><img src="../images/thumbs/' + data['image'] + '" class="marker-image"></img><p>' + data['project']['abstract'].substring(0, 120) + ' ...</p><a href="javascript:void(0);" rel="' + data['project']['id'] + '" title="Nánar um verkefni" class="more">Skoða verkefni</a> </div>';
 		                	infowindow.setContent(html);
 							infowindow.open(map, marker);
 		                }
@@ -184,15 +184,38 @@ var xland = {
 
 	showProject: function(id)
 	{
+		$("#project").show();
+		var project = $("#project");
+
+
      	$.ajax({ url: '/server.php',
-		        data: {action: 'getProjectById', project_id: id },
-		        type: 'post',
-		        success: function(result) {
-		                	//console.log(result);
-		                	var obj = $.parseJSON(result);
-		                	console.log(obj);
-		                	//console.log(obj[0].contact_person);
-		                }
+	        data: {action: 'getProjectById', project_id: id },
+	        type: 'post',
+	        success: function(result) {
+	                	//console.log(result);
+	                	var obj = $.parseJSON(result);
+	                	console.log(obj);
+	                	//console.log(obj[0].contact_person);
+	                	project.find(".category").html(obj[0].project_type);
+	                	project.find(".project-name").html(obj[0].project_name);
+	                	project.find(".description").html(obj[0].description);
+	                }
+		});
+
+		$.ajax({ url: '/server.php',
+			data: { action: 'getProjectImagesById', project_id: id },
+			type: 'post',
+			success: function(result) {
+						var obj = $.parseJSON(result);
+						//console.log(obj);
+						 $(".images").empty();
+
+						$.each(obj, function(i, image){
+							//console.log(item["name"])
+							var html = '<a href="javascript:void(0);" title="' + image["name"] + '"><img src="../images/thumbs/' + image["name"] + '" /></a>';
+							$(".images").append(html);
+						});
+			}
 		}); 
 	}
 };
@@ -213,5 +236,11 @@ $(document).ready(function(){
 			xland.showProject(id);
 		});
  	});
+
+ 	$("#project .close-project").bind("click", function(){
+ 		$("#project").hide();
+ 	});
+
+
 
 });

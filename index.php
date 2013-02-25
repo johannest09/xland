@@ -58,10 +58,23 @@
 			<div class="row">
 				<div class="wrap">
 					<div class="container">
-						<div class="col-6">
-							<div class="description"></div>
+						<div class="tabs">
+							<div class="row">
+								<div class="col-8"><div class="tab"><span class="category"></span><span class="project-name"></span></div></div>
+								<div class="col-4"><a href="javascript:void(0);" class="close-project"><div class="tab">Loka</div></a></div>
+							</div>
 						</div>
-						<div class="col-6"></div>
+						<div class="content">
+							<div class="col-6">
+								<div class="description"></div>
+							</div>
+							<div class="col-6">
+								<div class="images">
+									
+								</div>
+							</div>
+						</div>
+						
 					</div>
 				</div>
 			</div>

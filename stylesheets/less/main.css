@@ -454,14 +454,59 @@ body #project {
   display: none;
   position: absolute;
   left: 0;
-  top: 150px;
+  top: 180px;
   width: 100%;
   height: 650px;
   z-index: 10;
-  background: #1d1d1d;
+  background-color: rgba(0, 0, 0, 0.85);
 }
 body #project .container {
   position: relative;
+  margin-top: -30px;
   height: 650px;
-  background: #e2e2e2;
+}
+body #project .container .tabs {
+  height: 30px;
+}
+body #project .container .tabs .tab {
+  float: left;
+  padding: 8px 10px;
+  height: 100%;
+  color: #1d1d1d;
+  font-weight: 600;
+  background: #8ae0d0;
+}
+body #project .container .tabs .tab .category {
+  margin-right: 10px;
+  text-transform: uppercase;
+}
+body #project .container .tabs .tab .category:after {
+  content: " : ";
+}
+body #project .container .tabs .tab .project-name {
+  font-weight: 500;
+}
+body #project .container .tabs .close-project {
+  float: right;
+}
+body #project .container .content {
+  background: #36494e;
+  height: 100%;
+}
+body #project .container .content .description {
+  color: #8acac7;
+  line-height: 1.4;
+  margin: 20px;
+}
+body #project .container .content .description i {
+  font-style: italic;
+}
+body #project .container .content .images {
+  margin-top: 20px;
+}
+body #project .container .content .images img {
+  width: 100px;
+  height: 75px;
+  margin: 5px;
+  float: left;
 }

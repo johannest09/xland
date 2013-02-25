@@ -93,14 +93,14 @@
 	{
 		$connection = createConnection();
 
-		$sth = mysql_query("SELECT * FROM Images WHERE project_id = $id");
+		$sth = mysql_query("SELECT id, project_id, name, type, imagetext, image_category, is_primary FROM Images WHERE project_id = $id");
 		$data = array();
 		while($r = mysql_fetch_assoc($sth)) 
 		{
 		    $data[] = $r;
 		}
 		closeConnection($connection);
-		echo json_encode($rows);
+		echo json_encode( $data );
 	}
 
 	if(isset($_POST['action']) && !empty($_POST['action'])) {
@@ -109,6 +109,7 @@
 	    
 	    switch($action) {
 	    	case 'getInfoWindowDataById' : getInfoWindowDataById($id); break;
+	    	case 'getProjectImagesById': getProjectImagesById($id); break;
 	        case 'getProjectById' : getProjectById($id); break;
 	    }
 	}
