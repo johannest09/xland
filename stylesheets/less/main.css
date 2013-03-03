@@ -451,62 +451,165 @@ body .infowindow a:hover {
   background: #757575;
 }
 body #project {
-  display: none;
-  position: absolute;
-  left: 0;
-  top: 180px;
-  width: 100%;
+  display: block;
+  margin: 0 auto;
+  width: 960px;
   height: 650px;
   z-index: 10;
-  background-color: rgba(0, 0, 0, 0.85);
+  margin-top: 20px;
+  background: white;
 }
-body #project .container {
-  position: relative;
-  margin-top: -30px;
-  height: 650px;
+body #project .panel-wrapper {
+  padding: 10px;
 }
-body #project .container .tabs {
-  height: 30px;
-}
-body #project .container .tabs .tab {
+body #project .left-panel {
+  width: 20%;
   float: left;
-  padding: 8px 10px;
-  height: 100%;
-  color: #1d1d1d;
-  font-weight: 600;
-  background: #8ae0d0;
+  height: 650px;
+  background: #353f4e;
+  color: white;
+  font-size: 12px;
+  box-shadow: inset -5px -2px 14px rgba(0, 0, 0, 0.4);
 }
-body #project .container .tabs .tab .category {
-  margin-right: 10px;
+body #project .left-panel .category-title {
+  width: 100%;
+  height: 40px;
+  font-weight: 600;
+  font-size: 16px;
   text-transform: uppercase;
 }
-body #project .container .tabs .tab .category:after {
-  content: " : ";
+body #project .left-panel .category-title span {
+  display: block;
+  padding: 12px 5px 0 10px;
 }
-body #project .container .tabs .tab .project-name {
-  font-weight: 500;
+body #project .left-panel .project-thumb {
+  margin-bottom: 10px;
 }
-body #project .container .tabs .close-project {
+body #project .left-panel .project-thumb img {
+  border: 1px solid white;
+}
+body #project .left-panel h3 {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+body #project .left-panel .studio {
+  margin-bottom: 10px;
+}
+body #project .left-panel .studio a {
+  color: white;
+}
+body #project .left-panel .studio ul li {
+  padding: 2px 0;
+}
+body #project .left-panel .period {
+  margin: 20px 0;
+}
+body #project .left-panel .period span {
+  margin-right: 5px;
+  font-weight: bold;
+  font-size: 16px;
+}
+body #project .left-panel .area-size,
+body #project .left-panel .cost {
+  width: 100%;
+  float: left;
+}
+body #project .left-panel .area-size h3,
+body #project .left-panel .cost h3 {
+  float: left;
+  margin-right: 5px;
+}
+body #project .left-panel .area-size span,
+body #project .left-panel .cost span {
+  font-size: 14px;
+}
+body #project .project-container {
+  width: 80%;
+  float: left;
+}
+body #project .project-container .top {
+  height: 40px;
+}
+body #project .project-container .top h1 {
+  float: left;
+  margin: 0 20px;
+  line-height: 40px;
+}
+body #project .project-container .top .buttons {
   float: right;
 }
-body #project .container .content {
-  background: #36494e;
-  height: 100%;
-}
-body #project .container .content .description {
-  color: #8acac7;
-  line-height: 1.4;
-  margin: 20px;
-}
-body #project .container .content .description i {
-  font-style: italic;
-}
-body #project .container .content .images {
-  margin-top: 20px;
-}
-body #project .container .content .images img {
-  width: 100px;
-  height: 75px;
-  margin: 5px;
+body #project .project-container .top .buttons .button {
+  width: 165px;
   float: left;
+  padding: 7px 13px;
+  margin: 5px 10px;
+  background: #333333;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
+body #project .project-container .top .buttons .button:hover {
+  background: #f98253;
+}
+body #project .project-container .top .buttons .button.selected {
+  background: #35b0c7;
+}
+body #project .project-container .top .buttons .closebtn {
+  float: right;
+  width: 30px;
+  height: 30px;
+  margin: 5px 10px 0 10px;
+  position: relative;
+  background-color: #333333;
+}
+body #project .project-container .top .buttons .closebtn:after {
+  content: "x";
+  position: absolute;
+  top: 0;
+  left: 8px;
+  color: white;
+  font-size: 25px;
+}
+body #project .project-container .top .buttons .closebtn:hover {
+  background: #f98253;
+}
+body #project .project-container .content {
+  position: relative;
+  height: 500px;
+}
+body #project .project-container .content.slides .forward,
+body #project .project-container .content.slides .back {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+}
+body #project .project-container .content.slides .forward {
+  left: 10px;
+  background: url(../../images/sprites/sprite.png) no-repeat -128px -128px;
+  opacity: 0.8;
+}
+body #project .project-container .content.slides .back {
+  right: 10px;
+  background: url(../../images/sprites/sprite.png) no-repeat -160px -128px;
+  opacity: 0.8;
+}
+body #project .project-container .content.description .text-wrapper .text {
+  padding: 30px;
+  color: #5e5e5e;
+}
+body #project .project-container .bottom {
+  height: 110px;
+}
+body #project .project-container .bottom .thumbs {
+  padding: 15px;
+}
+body #project .project-container .bottom .thumbs ul li {
+  float: left;
+  margin: 0 5px;
+}
+body #project .project-container .bottom .thumbs ul li img {
+  width: 100px;
+  border: 1px solid #cccccc;
 }

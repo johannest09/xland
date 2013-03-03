@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 	<head>
 		<title>X-LAND</title>
@@ -64,40 +64,18 @@
 								<div class="col-4"><a href="javascript:void(0);" class="close-project"><div class="tab">Loka</div></a></div>
 							</div>
 						</div>
-						<div class="wrapper">
-							<div class="content">
-								<div class="col-6">
-									<div class="statistics">
-										<ul class="basic-project-info">
-											<li><span class="title">Verkefni<span><span class="project-name"></span></li>
-											<li><span class="title">Staðsetning</span><span class="location">Staðsetning</span></li>
-											<li><h3>Eigandi</h3><div class="product-owner"></div></li>
-											<li><div class="start-finish"><span class="title">Tímabil</span><span class="started"> - </span><span class="finished"></span></div></li>
-											<li><span class="title">Stærð</span><div><span class="size"></span><span class="scale"></span></div></li>
-											<li><h3>Kostnaður</h3><div class="capital-cost"></div></li>
-										</ul>
-										<ul class="studio">
-											<li><h3>Stofa/stofur</h3><div class="studio-name"></div></li>
-											<li><h3>Heimilisfang</h3><div class="studio-address"></div></li>
-											<li><h3>Vefsíða</h3><div class="website"></div></li>
-											<li><h3>Netfang</h3><div class="email"></div></li>
-											<li><h3>Tengill</h3><div class="contact-person"></div></li>
-											<li><h3>Samstarfsaðilar</h3><div class="affiliates"></div></li>
-										</ul>
-									</div>
-									<div class="description"></div>
-								</div>
-								<div class="col-6">
-
-									<div class="images">
-										<div class="primary"></div>
-										<div class="image-text"></div>
-									</div>
-									<div class="thumbs"></div>
-
-								</div>
+						<div class="content">
+							<div class="col-6">
+								<div class="description"></div>
 							</div>
-							
+							<div class="col-6">
+								<div class="statistics"></div>
+								<div class="images">
+									<div class="primary"></div>
+									<div class="image-text"></div>
+								</div>
+								<div class="thumbs"></div>
+							</div>
 						</div>
 						
 					</div>

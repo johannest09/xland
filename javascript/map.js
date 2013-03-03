@@ -199,6 +199,23 @@ var xland = {
 	                	project.find(".category").html(obj[0].project_type);
 	                	project.find(".project-name").html(obj[0].project_name);
 	                	project.find(".description").html(obj[0].description);
+
+	                	var description = $(".description");
+	                	$(".project-name").html(obj[0].name);
+	                	$(".location").html(obj[0].location);
+	                	$(".product-owner").html(obj[0].product_owner);
+	                	$(".started").html(obj[0].project_started);
+	                	$(".finished").html(obj[0].project_finished);
+	                	$(".size").html(obj[0].area_size);
+	                	$(".scale").html(obj[0].scale);
+	                	$(".captial_cost").html(obj[0].capital_cost);
+	                	
+	                	$(".studio-name").html(obj[0].studio);
+	                	$(".studio_address").html(obj[0].studio);
+	                	$(".website").html(obj[0].website);
+	                	$(".email").html(obj[0].email);
+	                	$(".contact-person").html(obj[0].contact_person);	                	
+	                	$(".affiliates").html(obj[0].affiliates);
 	                }
 		});
 
@@ -207,14 +224,26 @@ var xland = {
 			type: 'post',
 			success: function(result) {
 						var obj = $.parseJSON(result);
-						//console.log(obj);
-						 $(".images").empty();
-
+						
+						$(".thumbs").empty();
 						$.each(obj, function(i, image){
 							//console.log(item["name"])
-							var html = '<a href="javascript:void(0);" title="' + image["name"] + '"><img src="../images/thumbs/' + image["name"] + '" /></a>';
-							$(".images").append(html);
+							if(i < 9 && image["is_primary"] == 0)
+							{
+								console.log("not primary")
+								var content = '<a href="javascript:void(0);" title="' + image["name"] + '"><img src="../images/thumbs/' + image["name"] + '" /></a>';
+								$(".thumbs").append(content);
+							}
+							if(image["is_primary"] == 1)
+							{
+								console.log("it is primary")
+								var main_image = '<a href="javascript:void(0); title="' + image["name"] + '"><img src="../images/large/' + image["name"] + '" alt="' + image["name"] + '" /></a>'; 
+								$(".primary").html(main_image);
+								$(".image-text").html(image["image_text"]);
+							}
+							
 						});
+						
 			}
 		}); 
 	}
