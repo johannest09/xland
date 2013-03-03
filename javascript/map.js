@@ -184,8 +184,8 @@ var xland = {
 
 	showProject: function(id)
 	{
-		$("#project").show();
-		var project = $("#project");
+		$(".overlay").show();
+		var project = $(".overlay");
 
 
      	$.ajax({ url: '/server.php',
@@ -266,9 +266,30 @@ $(document).ready(function(){
 		});
  	});
 
- 	$("#project .close-project").bind("click", function(){
- 		$("#project").hide();
+ 	$(".overlay .closebtn").bind("click", function(){
+ 		$(".overlay").hide();
  	});
+
+ 	$(".button").bind("click", function() {
+
+ 		$(".button").removeClass("selected");
+ 		$(this).addClass("selected");
+
+ 		if($(this).hasClass("one"))
+ 		{
+ 			if(!$(".content").hasClass("description"))
+ 				$(".content").addClass("description");
+
+ 			$(".content").removeClass("slides");
+ 		}
+ 		if($(this).hasClass("two"))
+ 		{
+ 			if(!$(".content").hasClass("slides"))
+ 				$(".content").addClass("slides");
+
+ 			$(".content").removeClass("description");
+ 		}
+ 	})
 
 
 

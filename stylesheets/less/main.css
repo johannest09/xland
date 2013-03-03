@@ -450,26 +450,37 @@ body .infowindow a {
 body .infowindow a:hover {
   background: #757575;
 }
+body .overlay {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 300;
+  background-color: rgba(16, 51, 51, 0.4);
+}
 body #project {
-  display: block;
   margin: 0 auto;
+  margin-top: 170px;
   width: 960px;
   height: 650px;
   z-index: 10;
-  margin-top: 20px;
   background: white;
 }
 body #project .panel-wrapper {
   padding: 10px;
 }
 body #project .left-panel {
+  position: relative;
   width: 20%;
   float: left;
   height: 650px;
-  background: #353f4e;
+  background: #333333;
   color: white;
   font-size: 12px;
-  box-shadow: inset -5px -2px 14px rgba(0, 0, 0, 0.4);
+  /* box-shadow: inset -5px -2px 14px rgba(0, 0, 0, 0.4); */
+
 }
 body #project .left-panel .category-title {
   width: 100%;
@@ -524,6 +535,41 @@ body #project .left-panel .area-size span,
 body #project .left-panel .cost span {
   font-size: 14px;
 }
+body #project .left-panel .social-media {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 35px;
+}
+body #project .left-panel .social-media ul {
+  margin-left: 10px;
+}
+body #project .left-panel .social-media ul li {
+  float: left;
+  margin: 0 3px;
+}
+body #project .left-panel .social-media ul li a.facebook {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: url('/images/sprites/sprite.png') no-repeat;
+  background-position: -64px -128px;
+}
+body #project .left-panel .social-media ul li a.twitter {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: url('/images/sprites/sprite.png') no-repeat;
+  background-position: -32px -128px;
+}
+body #project .left-panel .social-media ul li a.google {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: url('/images/sprites/sprite.png') no-repeat;
+  background-position: 0 -128px;
+}
 body #project .project-container {
   width: 80%;
   float: left;
@@ -554,6 +600,12 @@ body #project .project-container .top .buttons .button:hover {
 }
 body #project .project-container .top .buttons .button.selected {
   background: #35b0c7;
+}
+body #project .project-container .top .buttons .button span.arrow {
+  float: right;
+  width: 12px;
+  height: 16px;
+  background: url('/images/sprites/sprite.png') no-repeat -232px -72px;
 }
 body #project .project-container .top .buttons .closebtn {
   float: right;
@@ -590,10 +642,20 @@ body #project .project-container .content.slides .forward {
   background: url(../../images/sprites/sprite.png) no-repeat -128px -128px;
   opacity: 0.8;
 }
+body #project .project-container .content.slides .forward:hover {
+  background-position: -192px -128px;
+}
 body #project .project-container .content.slides .back {
   right: 10px;
   background: url(../../images/sprites/sprite.png) no-repeat -160px -128px;
   opacity: 0.8;
+}
+body #project .project-container .content.slides .back:hover {
+  background-position: -224px -128px;
+}
+body #project .project-container .content.description .text-wrapper {
+  height: 100%;
+  background: #cccccc;
 }
 body #project .project-container .content.description .text-wrapper .text {
   padding: 30px;

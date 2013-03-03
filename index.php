@@ -53,61 +53,66 @@
 				</div>
 			</div>
 		</header>
-
-		<section id="project">
-			<div class="row">
-				<div class="wrap">
-					<div class="container">
-						<div class="tabs">
-							<div class="row">
-								<div class="col-8"><div class="tab"><span class="category"></span><span class="project-name"></span></div></div>
-								<div class="col-4"><a href="javascript:void(0);" class="close-project"><div class="tab">Loka</div></a></div>
+		<div class="overlay">
+			<div id="project">
+				<aside class="left-panel">
+					<div class="category-title">
+						<span></span>
+					</div>
+					<div class="panel-wrapper">
+						<div class="project-thumb"></div>
+						<div class="basic-info">
+							<div class="studio">
+								<h3>Stofa/þáttakendur</h3>
 							</div>
-						</div>
-						<div class="wrapper">
-							<div class="content">
-								<div class="col-6">
-									<div class="statistics">
-										<ul class="basic-project-info">
-											<li><span class="title">Verkefni<span><span class="project-name"></span></li>
-											<li><span class="title">Staðsetning</span><span class="location">Staðsetning</span></li>
-											<li><h3>Eigandi</h3><div class="product-owner"></div></li>
-											<li><div class="start-finish"><span class="title">Tímabil</span><span class="started"> - </span><span class="finished"></span></div></li>
-											<li><span class="title">Stærð</span><div><span class="size"></span><span class="scale"></span></div></li>
-											<li><h3>Kostnaður</h3><div class="capital-cost"></div></li>
-										</ul>
-										<ul class="studio">
-											<li><h3>Stofa/stofur</h3><div class="studio-name"></div></li>
-											<li><h3>Heimilisfang</h3><div class="studio-address"></div></li>
-											<li><h3>Vefsíða</h3><div class="website"></div></li>
-											<li><h3>Netfang</h3><div class="email"></div></li>
-											<li><h3>Tengill</h3><div class="contact-person"></div></li>
-											<li><h3>Samstarfsaðilar</h3><div class="affiliates"></div></li>
-										</ul>
-									</div>
-									<div class="description"></div>
+							<div class="designer">
+								<h3>Hönnuðir</h3>
+							</div>
+							<div class="data">
+								<div class="period"></div>
+								<div class="area-size">
+									<h3>Stærð</h3><span class="size"></span><span class="scale"></span>
 								</div>
-								<div class="col-6">
-
-									<div class="images">
-										<div class="primary"></div>
-										<div class="image-text"></div>
-									</div>
-									<div class="thumbs"></div>
-
+								<div class="cost">
+									<h3>Kostnaður</h3>
 								</div>
 							</div>
-							
 						</div>
+						<div class="social-media">
+							<ul>
+								<li><a href="#" class="facebook"></a></li>
+								<li><a href="#" class="twitter"></a></li>
+								<li><a href="#" class="google"></a></li>
+							</ul>
+						</div>
+					</div>
+				</aside>
+				<div class="project-container">
+					<div class="top">
+						<h1></h1>
+						<div class="buttons">
+							<a href="javascript:void(0);" class="button one">Lýsing verkefnis<span class="arrow"></span></a>
+							<a href="javascript:void(0);" class="button two">Myndefni<span class="arrow"></span></a>
+							<a href="javascript:void(0);" class="closebtn"></a>
+						</div>
+					</div>
+					<div class="content slides">
+						<a href="javascript:void(0)" class="forward"></a>
+						<a href="javascript:void(0)" class="back"></a>
 						
+						<div class="text-wrapper">
+							<div class="text"></div>
+						</div>
+					</div>
+					<div class="bottom">
+						<div class="thumbs"></div>
 					</div>
 				</div>
 			</div>
-		</section>
+		</div>
 
 		<section id="map-canvas"></section>
 
-		
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCe-U-BLvwE6b8biTRNaYPmboqbJhrlhpU&sensor=true"></script>
 		<script type="text/javascript" src="javascript/jquery.ui.map.js"></script>
@@ -118,6 +123,5 @@
 		<script type="text/javascript" src="javascript/jquery.fancybox-media.js?v=1.0.5"></script>
 		<script type="text/javascript" src="javascript/jquery.fancybox-thumbs.js?v=1.0.7"></script>
 
-			
 	</body>
 </html>
