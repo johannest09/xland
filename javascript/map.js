@@ -110,14 +110,15 @@ var xland = {
 		// currently the marker data contain a dataurl field this can of course be done different
 		google.maps.event.addListener(marker, 'click', function() {
 			// show marker when clicked
+			map.panTo(marker.position);
 			MapContainer.showInfoWindow(marker.id);
 		});
 
 		// add event when marker window is closed to reset map location
 		
 		google.maps.event.addListener(infowindow,'closeclick', function() {
-			map.setCenter(defaultLatlng);
-			map.setZoom(defaultZoom);
+			//map.setCenter(defaultLatlng);
+			//map.setZoom(defaultZoom);
 		});
 		
 	},
@@ -196,26 +197,45 @@ var xland = {
 	                	var obj = $.parseJSON(result);
 	                	console.log(obj);
 	                	//console.log(obj[0].contact_person);
-	                	project.find(".category").html(obj[0].project_type);
-	                	project.find(".project-name").html(obj[0].project_name);
-	                	project.find(".description").html(obj[0].description);
+	                	project.find(".category-title").html('<span>' + obj[0].project_type + '</span>');
+	                	project.find("h1").html(obj[0].project_name);
+	                	project.find(".overview").html(obj[0].description);
 
-	                	var description = $(".description");
 	                	$(".project-name").html(obj[0].name);
 	                	$(".location").html(obj[0].location);
-	                	$(".product-owner").html(obj[0].product_owner);
-	                	$(".started").html(obj[0].project_started);
-	                	$(".finished").html(obj[0].project_finished);
-	                	$(".size").html(obj[0].area_size);
-	                	$(".scale").html(obj[0].scale);
-	                	$(".captial_cost").html(obj[0].capital_cost);
+	                	$(".product-owner").html('<h3>Eigandi verkefnis</h3><span>' + obj[0].product_owner + '</span>');
+	                	
+	                	if(obj[0].project_finished != 0)
+	                	{
+	                		$(".period").html('<span>' + obj[0].project_started + '</span> - <span>' + obj[0].project_finished + '</span>');
+	                	}
+	                	else if(obj[0].project_started != 0)
+	                	{
+	                		$(".period").html('<span>' + obj[0].project_started + '</span>');
+	                	}
+	                	
+	                	$(".size").html(Math.round(obj[0].area_size));
+	                	var scale = obj[0].scale;
+	                	var scaleabbr = getScale(scale);
+	                	$(".scale").html(scaleabbr);
+
+	                	$(".cost").html(obj[0].capital_cost);
 	                	
 	                	$(".studio-name").html(obj[0].studio);
-	                	$(".studio_address").html(obj[0].studio);
-	                	$(".website").html(obj[0].website);
-	                	$(".email").html(obj[0].email);
-	                	$(".contact-person").html(obj[0].contact_person);	                	
-	                	$(".affiliates").html(obj[0].affiliates);
+	                	$(".address").html(obj[0].studio_address);
+	                	$(".website").html('<a href="' + obj[0].website + '">' + obj[0].website + '</a>');
+	                	$(".email").html('<a href="mailto:' + obj[0].email + '">' + obj[0].email + '</a>');
+	                	
+	                	if(obj[0].affiliates != "")
+	                	{
+	                		var affiliates = '<h3>Samstarfsaðilar</h3><span>' + obj[0].affiliates + '</span>';
+	                		$(".affiliates").html(affiliates);
+	                	}
+
+	                	$(".image").show();
+	                	$(".thumbs").show();
+	                	$(".text-wrapper").hide();
+
 	                }
 		});
 
@@ -224,26 +244,49 @@ var xland = {
 			type: 'post',
 			success: function(result) {
 						var obj = $.parseJSON(result);
-						
 						$(".thumbs").empty();
+						var list = "";
 						$.each(obj, function(i, image){
-							//console.log(item["name"])
-							if(i < 9 && image["is_primary"] == 0)
+							
+							if(image["is_primary"] == 0)
 							{
-								console.log("not primary")
-								var content = '<a href="javascript:void(0);" title="' + image["name"] + '"><img src="../images/thumbs/' + image["name"] + '" /></a>';
-								$(".thumbs").append(content);
+								list += '<li><a href="#" rel="group" data="' + image["name"] + '"><img src="../images/thumbs/' + image["name"] + '" /></a></li>';
 							}
 							if(image["is_primary"] == 1)
 							{
-								console.log("it is primary")
-								var main_image = '<a href="javascript:void(0); title="' + image["name"] + '"><img src="../images/large/' + image["name"] + '" alt="' + image["name"] + '" /></a>'; 
+								var main_image = '<a href="javascript:void(0); title="' + image["name"] + '"><img src="../images/resized/' + image["name"] + '" alt="' + image["name"] + '" /></a>'; 
 								$(".primary").html(main_image);
 								$(".image-text").html(image["image_text"]);
+
+								var thumb = '<img src="../images/thumbs/' + image["name"] + '" alt="' + image["name"] + '" />'; 
+								var image = '<a class="fancybox" rel="group" href="../images/resized/' + image["name"] + '"><img src="../images/resized/' + image["name"] + '" alt="' + image["name"] + '" /></a>'; 
+								$(".project-thumb").html(thumb);
+								$(".image").html(image);
 							}
-							
 						});
-						
+						$(".thumbs").html('<ul>' + list + '</ul><a class="prev" id="prev" href="#"><span>prev</span></a><a class="next" id="next" href="#"><span>next</span></a><div class="pagination" id="pag"></div>');
+						$(".thumbs ul").carouFredSel({
+							circular: false,
+							infinite: false,
+							auto: false,
+							prev	: {
+								button	: "#prev",
+								key		: "left"
+							},
+							next	: {
+								button	: "#next",
+								key		: "right"
+							},
+							pagination	: "pag"
+						});
+
+						$(".thumbs ul li a").bind("click", function(){
+					 		console.log(this);
+					 		var selectedImage = $(this).attr("data");
+					 		console.log(selectedImage);
+					 		var image = '<a class="fancybox" rel="group" href="../images/resized/' + selectedImage + '"><img src="../images/resized/' + selectedImage + '" alt="' + selectedImage + '" /></a>'; 
+					 		$(".image").html(image);
+					 	});
 			}
 		}); 
 	}
@@ -251,7 +294,26 @@ var xland = {
 
 $(document).ready(function(){
 
-	//$(".fancybox").fancybox();
+	$(".fancybox").fancybox(
+		{
+			maxWidth	: 960,
+			maxHeight	: 800,
+			width 		: '100%',
+			height 		: '100%',
+			autosize	: false,
+			fitToView	: false,
+			padding : 0,
+
+			helpers : {
+		        overlay : {
+		            css : {
+		                'background' : 'rgba(20, 68, 74, 0.90)'
+		            }
+		        }
+		    }
+		}
+	);
+
 
 	google.maps.event.addListenerOnce(xland.loadMap(), 'idle', function(){
 		xland.navigationFilter();
@@ -268,6 +330,11 @@ $(document).ready(function(){
 
  	$(".overlay .closebtn").bind("click", function(){
  		$(".overlay").hide();
+ 		$(".content").removeClass("description");
+ 		$(".content").addClass("slides");
+ 		$(".text-wrapper .text").empty();
+ 		$(".image").empty();
+ 		$(".thumbs").empty();
  	});
 
  	$(".button").bind("click", function() {
@@ -278,19 +345,42 @@ $(document).ready(function(){
  		if($(this).hasClass("one"))
  		{
  			if(!$(".content").hasClass("description"))
+ 			{
  				$(".content").addClass("description");
+ 				$(".content").find(".image").hide();
+ 				$(".content").find(".text-wrapper").show();
+ 				$(".thumbs").hide();
+ 				$("#scrollbar1").tinyscrollbar();
+ 			}
 
  			$(".content").removeClass("slides");
  		}
  		if($(this).hasClass("two"))
  		{
  			if(!$(".content").hasClass("slides"))
+ 			{
  				$(".content").addClass("slides");
-
+ 				$(".text-wrapper").hide();
+ 				$(".image").show();
+ 				$(".thumbs").show();
+ 			}
  			$(".content").removeClass("description");
  		}
- 	})
-
-
+ 	});
 
 });
+
+function getScale(scale)
+{
+	var abbr = "";
+	switch(scale)
+	{
+		case "fermetrar":
+			abbr = "m<sup>2</sup>";
+			break;
+		case "hektarar":
+		    abbr = "ha";
+		    break;
+	}
+	return abbr;	
+}

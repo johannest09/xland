@@ -8,19 +8,17 @@
 		<meta name="revisit-after" content="5 Days" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="title" content="XLAND - Landslagsarkitektúr" />
-		<meta name="description" content='See the landscape arcithechture sites in Reykjavik' />
+		<meta name="description" content='See the landscape archithechture sites in Reykjavik' />
 		
 		<?php include 'server.php'; ?>
 
-		<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700' rel='stylesheet' type='text/css' />
 		<link rel="stylesheet" type="text/css" href="stylesheets/less/main.css" />
 
 		<link rel="stylesheet" type="text/css" href="stylesheets/less/jquery.fancybox.css?v=2.1.3"  media="screen" />
 		<link rel="stylesheet" type="text/css" href="stylesheets/less/jquery.fancybox-buttons.css?v=1.0.5" media="screen" />
 		<link rel="stylesheet" type="text/css" href="stylesheets/less/jquery.fancybox-thumbs.css?v=1.0.7" media="screen" />
 
-		<!--link rel="stylesheet" type="text/css" href="stylesheets/less/responsive.css" /-->
-		
 	</head>
 	
 	<body>
@@ -56,27 +54,34 @@
 		<div class="overlay">
 			<div id="project">
 				<aside class="left-panel">
-					<div class="category-title">
-						<span></span>
-					</div>
+					<div class="category-title"></div>
 					<div class="panel-wrapper">
 						<div class="project-thumb"></div>
-						<div class="basic-info">
-							<div class="studio">
-								<h3>Stofa/þáttakendur</h3>
-							</div>
-							<div class="designer">
-								<h3>Hönnuðir</h3>
-							</div>
-							<div class="data">
-								<div class="period"></div>
-								<div class="area-size">
-									<h3>Stærð</h3><span class="size"></span><span class="scale"></span>
-								</div>
-								<div class="cost">
-									<h3>Kostnaður</h3>
-								</div>
-							</div>
+						<ul>
+							<li class="studio">
+								<h3>Stofa/Þáttakendur</h3>
+								<div class="studio-name"></div>
+							</li>
+							<li class="studio-details">
+								<ul>
+									<li class="address"></li>
+									<li class="website"></li>
+									<li class="email"></li>
+								</ul>
+							</li>
+							<li class="affiliates"></li>
+							<li class="data">
+								<ul>
+									<li class="period"></li>
+									<li class="area-size"><h3>Stærð</h3><span class="size"></span><span class="scale"></span></li>
+									<li class="project-cost"><h3>Kostnaður</h3><span class="cost"></span></li>
+								</ul>
+							</li>
+							<li class="project-owner"></li>
+						</ul>
+						<div class="buttons">
+							<a href="javascript:void(0);" class="button one">Lýsing verkefnis<span class="arrow"></span></a>
+							<a href="javascript:void(0);" class="button two">Myndefni<span class="arrow"></span></a>
 						</div>
 						<div class="social-media">
 							<ul>
@@ -90,23 +95,21 @@
 				<div class="project-container">
 					<div class="top">
 						<h1></h1>
-						<div class="buttons">
-							<a href="javascript:void(0);" class="button one">Lýsing verkefnis<span class="arrow"></span></a>
-							<a href="javascript:void(0);" class="button two">Myndefni<span class="arrow"></span></a>
-							<a href="javascript:void(0);" class="closebtn"></a>
-						</div>
+						<a href="javascript:void(0);" class="closebtn"></a>
 					</div>
 					<div class="content slides">
-						<a href="javascript:void(0)" class="forward"></a>
-						<a href="javascript:void(0)" class="back"></a>
-						
+						<div class="image"></div>
 						<div class="text-wrapper">
-							<div class="text"></div>
+							<div id="scrollbar1">
+							    <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+							    <div class="viewport">
+							        <div class="overview"></div>
+							    </div>
+							</div>
 						</div>
-					</div>
-					<div class="bottom">
 						<div class="thumbs"></div>
 					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -115,13 +118,9 @@
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCe-U-BLvwE6b8biTRNaYPmboqbJhrlhpU&sensor=true"></script>
-		<script type="text/javascript" src="javascript/jquery.ui.map.js"></script>
 		<script src="javascript/map.js" type="text/javascript"></script>
+		<script src="javascript/lib.js" type="text/javascript"></script>
 
-		<script type="text/javascript" src="javascript/jquery.fancybox.pack.js?v=2.1.3"></script>
-		<script type="text/javascript" src="javascript/jquery.fancybox-buttons.js?v=1.0.5"></script>
-		<script type="text/javascript" src="javascript/jquery.fancybox-media.js?v=1.0.5"></script>
-		<script type="text/javascript" src="javascript/jquery.fancybox-thumbs.js?v=1.0.7"></script>
 
 	</body>
 </html>

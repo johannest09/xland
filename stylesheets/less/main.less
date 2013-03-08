@@ -56,127 +56,205 @@ h1 { font-size: 28px; }
 
 h1, h2, h3, h4 { margin-bottom: 10px; }
 
+.clearfix() {*zoom:1; &:before, &:after { content:""; display:table; } &:after { clear:both; }}
+
+
 /* =============================================================================
     Body and content
    ========================================================================== */
 
-body { position: relative; font-family: @font-main; color: @font-color-main; font-size: @font-size-main;
+body { position: relative; font-family: @font-main; color: @font-color-main; font-size: @font-size-main; }
 	
-	header { position: fixed; top: 30px; height: 75px; width: 100%; z-index: 10; .box-shadow(0px 6px 4px 0px rgba(0,0,0,0.2)); background: url(/images/banner-bg.png);
-		.header-content { padding: 10px 0 25px; 
-			.row { margin: 0; 
-				.xland-logo { display: block; width: 180px; height: 103px; margin-top: -13px; background: url(@spritePath) no-repeat; }
-				.fila { float: right; }
-				nav { margin-top: 30px;
-					ul { list-style: none; height: 30px; 
-						li { display: inline; position: relative; margin: 0 5px; 
-							a { display: inline-block; padding: 5px 15px; font-weight: 600; color: #fff; .rounded(2px);  
-								&.structure.active { color: @color_main_orange; }
-								&.public-space.active { color: @color_main_lightgreen; }
-								&.competition.active { color: @color_main_purple; }
-								&.history.active { color: @color_main_green; }
-								&.show-all.active { color: @color_main_lightgreen; }
-								&.about.active { color: @color_main_yellow; }
+header { position: fixed; top: 30px; height: 75px; width: 100%; z-index: 10; .box-shadow(0px 6px 4px 0px rgba(0,0,0,0.2)); background: url(/images/banner-bg.png);
+	.header-content { padding: 10px 0 25px; 
+		.row { margin: 0; 
+			.xland-logo { display: block; width: 180px; height: 103px; margin-top: -13px; background: url(@spritePath) no-repeat; }
+			.fila { float: right; }
+			nav { margin-top: 30px;
+				ul { list-style: none; height: 30px; 
+					li { display: inline; position: relative; margin: 0 5px; 
+						a { display: inline-block; padding: 5px 15px; font-weight: 600; color: #fff; .rounded(2px);  
+							&.structure.active { color: @color_main_orange; }
+							&.public-space.active { color: @color_main_lightgreen; }
+							&.competition.active { color: @color_main_purple; }
+							&.history.active { color: @color_main_green; }
+							&.show-all.active { color: @color_main_lightgreen; }
+							&.about.active { color: @color_main_yellow; }
 
-							}
-
-							&.active { border: 2px solid #fff; }
-							
-							
 						}
+
+						&.active { border: 2px solid #fff; }
+						
+						
 					}
 				}
 			}
 		}
 	}
-	.infowindow { width: 360px;
-		h2 { font-weight: 600; font-size: 16px; }
-		.marker-image { max-width: 130px; float: left; margin-right: 10px; }
-		a { display: block; float: right; padding: 4px 6px; font-size: 15px; font-weight: 500; background: #303030; color: @color_main_lightgreen; 
-			&:hover { background: #757575; }
-		}
+}
+.infowindow { width: 360px;
+	h2 { font-weight: 600; font-size: 16px; }
+	.marker-image { max-width: 130px; float: left; margin-right: 10px; }
+	a { display: block; float: right; padding: 4px 6px; font-size: 15px; font-weight: 500; background: #303030; color: @color_main_lightgreen; 
+		&:hover { background: #757575; }
 	}
+}
 
-	.overlay { display: none; width: 100%; height: 100%; position: absolute; left: 0; top: 0; z-index: 300; background-color: rgba(16, 51, 51, 0.4); }
-	#project {  margin: 0 auto; margin-top: 170px; width: 960px; height: 650px; z-index: 10; background: #fff;
-		.panel-wrapper { padding: 10px; }
-		.left-panel { position: relative; width: 20%; float: left; height: 650px; background: #333; color: #fff; font-size: 12px; /* box-shadow: inset -5px -2px 14px rgba(0, 0, 0, 0.4); */
-			.category-title { width: 100%; height: 40px; font-weight: 600; font-size: 16px; text-transform: uppercase;
-				span { display: block; padding: 12px 5px 0 10px; }
-			}
-			.project-thumb { margin-bottom: 10px; 
-				img { border: 1px solid #fff; }
-			}
-			h3 { font-size: 14px; font-weight: bold; margin-bottom: 6px;}
-			.studio { margin-bottom: 10px;
-				a { color: #fff; }				
-				ul li { padding: 2px 0; }
-			}
-			.period {margin: 20px 0; 
-				span { margin-right: 5px; font-weight: bold; font-size: 16px; }
-			}
-			.area-size, .cost { width: 100%; float: left; 
-				h3 { float: left; margin-right: 5px; }
-				span { font-size: 14px; }
-			}
-			.social-media { position: absolute; bottom: 0; left: 0; width: 100%; height: 35px;
-				ul { margin-left: 10px; 
-					li { float: left; margin: 0 3px; 
-						a.facebook { display: block; width: 24px; height: 24px; background: url('/images/sprites/sprite.png') no-repeat; background-position: -64px -128px; }
-						a.twitter { display: block; width: 24px; height: 24px; background: url('/images/sprites/sprite.png') no-repeat; background-position: -32px -128px; }
-						a.google { display: block; width: 24px; height: 24px; background: url('/images/sprites/sprite.png') no-repeat; background-position: 0 -128px; }			
-					}
-				} 
+.overlay { display: none; width: 100%; height: 100%; position: absolute; left: 0; top: 0; z-index: 300; background-color: rgba(16, 51, 51, 0.4); }
+#project {  margin: 0 auto; margin-top: 170px; width: 960px; height: 650px; z-index: 10; background: #fff;
+	.panel-wrapper { padding: 10px; }
+	.left-panel { position: relative; width: 20%; float: left; height: 650px; background: #333; color: #e6ebd7; line-height: 14px; font-size: 13px; /* box-shadow: inset -5px -2px 14px rgba(0, 0, 0, 0.4); */
+		.category-title { width: 100%; height: 40px; font-weight: 600; font-size: 16px; text-transform: uppercase;
+			span { display: block; padding: 12px 5px 0 10px; }
+		}
+		.project-thumb { margin-bottom: 10px; 
+			img { border: 1px solid #fff; }
+		}
+		.studio { margin-bottom: 10px;
+			a { color: #fff; }				
+			ul li { padding: 2px 0; }
+		}
+		.period {margin: 20px 0; 
+			span { margin-right: 5px; font-weight: bold; font-size: 16px; }
+		}
+		.area-size, .cost { width: 100%; float: left; 
+			h3 { float: left; margin-right: 5px; }
+			span { font-size: 14px; }
+		}
+
+		a { color: pink; }
+		h3 { color: #8AE0D0; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+		ul { list-style: none;
+			li { margin-bottom: 10px; }
+			ul li { margin-bottom: 5px; }
+		}
+
+		.social-media { position: absolute; bottom: 0; left: 0; width: 100%; height: 35px;
+			ul { margin-left: 10px; 
+				li { float: left; margin: 0 3px; 
+					a.facebook { display: block; width: 24px; height: 24px; background: url('/images/sprites/sprite.png') no-repeat; background-position: -64px -128px; }
+					a.twitter { display: block; width: 24px; height: 24px; background: url('/images/sprites/sprite.png') no-repeat; background-position: -32px -128px; }
+					a.google { display: block; width: 24px; height: 24px; background: url('/images/sprites/sprite.png') no-repeat; background-position: 0 -128px; }			
+				}
 			} 
 		}
-		.project-container { width: 80%; float: left;
-			.top { height: 40px;
-				h1 { float: left; margin: 0 20px; line-height: 40px; }
-				.buttons { float: right;
-					.button { width: 165px; float: left; padding: 7px 13px; margin: 5px 10px; background: #333; color: #fff; font-weight: bold; font-size: 16px; 
-						&:hover {
-							background: @color_main_orange;
-						}
-						&.selected { background: #35b0c7; }	
-						span.arrow { float: right; width: 12px; height: 16px; background: url('/images/sprites/sprite.png') no-repeat -232px -72px; } 
-					}
-					.closebtn { float: right; width: 30px; height: 30px; margin: 5px 10px 0 10px; position: relative; background-color: #333;
-						&:after { content:"x"; position: absolute; top: 0; left: 8px; color: #fff; font-size: 25px; }
-						&:hover {
-							background: @color_main_orange;
-						}
 
-					}
+		.buttons { float: right;
+			.button { width: 145px; float: left; padding: 7px 10px; margin: 5px 8px; background: #8ae0d0; color: #fff; font-weight: bold; font-size: 16px; 
+				&:hover {
+					background: @color_main_orange;
 				}
+				&.selected { background: #35b0c7; }	
+				span.arrow { float: right; width: 12px; height: 16px; background: url('/images/sprites/sprite.png') no-repeat -232px -72px; } 
 			}
-			.content { position: relative; height: 500px; 
-				&.slides {
-					.forward, .back { width: 30px; height: 30px; position: absolute; top: 50%;  }
-					.forward { left: 10px; background: url(../../images/sprites/sprite.png) no-repeat -128px -128px; opacity: 0.8; 
-						&:hover { background-position: -192px -128px; }
-					}
-					.back { right: 10px; background: url(../../images/sprites/sprite.png) no-repeat -160px -128px; opacity: 0.8; 
-						&:hover { background-position: -224px -128px; }
-					}
-				}
-				&.description {
-					.text-wrapper { height: 100%; background: #ccc;
-						.text { padding: 30px; color: #5e5e5e;}
-					}
-				}
+			
+		}
+		
 
-				
-				
-			}
-			.bottom { height: 110px; 
-				.thumbs { padding: 15px; 
-					ul li { float: left; margin: 0 5px; 
-						img { width: 100px; border: 1px solid #ccc; }
-					} 
+	}
+	.project-container { width: 80%; height: 100%; float: left;
+		.top { height: 40px; background: #fff;
+			h1 { float: left; margin: 0 20px; line-height: 40px; font-size: 22px; }
+			.closebtn { float: right; width: 30px; height: 30px; margin: 5px 10px 0 10px; position: relative; background-color: #333;
+				&:after { content:"x"; position: absolute; top: 0; left: 8px; color: #fff; font-size: 25px; }
+				&:hover {
+					background: @color_main_orange;
 				}
 			}
 		}
-
-	}
+		.content {
+			&.slides {
+				.forward, .back { width: 30px; height: 30px; position: absolute; top: 50%;  }
+				.forward { left: 10px; background: url(../../images/sprites/sprite.png) no-repeat -128px -128px; opacity: 0.8; 
+					&:hover { background-position: -192px -128px; }
+				}
+				.back { right: 10px; background: url(../../images/sprites/sprite.png) no-repeat -160px -128px; opacity: 0.8; 
+					&:hover { background-position: -224px -128px; }
+				}
+				.image img { width: 100%; height: 500px; }
+			}
+			&.description {
+				.text-wrapper { height: 550px; margin: 20px;
+					.text { height: 500px; padding: 30px; color: #5e5e5e; line-height: 1.3; }
+				}
+			}
+			
+		}
+		.thumbs { width: 100%; height: 110px; 
+			li { float: left; margin: 0 5px; display: block;
+				img { width: 100px; height: 68px; border: 3px solid #e6ebd7; }
+			} 
+		}
 		
+	}
+}
+
+/* Tiny Scrollbar */
+#scrollbar1 { width: 100%; height: 100%; margin: 20px 0 10px; }
+#scrollbar1 .viewport { width: 90%; height: 100%; overflow: hidden; position: relative; }
+#scrollbar1 .overview { list-style: none; position: absolute; left: 0; top: 0; padding: 0; margin: 0; }
+#scrollbar1 .scrollbar{ background: transparent url(../../images/bg-scrollbar-track-y2.png) no-repeat 0 0; position: relative; background-position: 0 0; float: right; width: 15px; }
+#scrollbar1 .track { background: transparent url(../../images/bg-scrollbar-trackend-y.png) no-repeat 0 100%; height: 100%; width:13px; position: relative; padding: 0 1px; }
+#scrollbar1 .thumb { background: transparent url(../../images/bg-scrollbar-thumb-y.png) no-repeat 50% 100%; height: 20px; width: 25px; cursor: pointer; overflow: hidden; position: absolute; top: 0; left: -5px; }
+#scrollbar1 .thumb .end { background: transparent url(../../images/bg-scrollbar-thumb-y.png) no-repeat 50% 0; overflow: hidden; height: 5px; width: 25px; }
+#scrollbar1 .disable { display: none; }
+.noSelect { user-select: none; -o-user-select: none; -moz-user-select: none; -khtml-user-select: none; -webkit-user-select: none; }
+
+/* CarouFred */
+
+.thumbs {
+	padding: 15px 0 15px 40px;
+	position: relative;
+}
+.thumbs img {
+	border: 1px solid #ccc;
+	background-color: white;
+	padding: 9px;
+	margin: 7px;
+	display: block;
+	float: left;
+}
+a.prev, a.next {
+	background: url(../../images/sprites/carouFred_sprite.png) no-repeat transparent;
+	width: 45px;
+	height: 50px;
+	display: block;
+	position: absolute;
+	top: 85px;
+}
+a.prev {			left: -22px;
+					background-position: 0 0; }
+a.prev:hover {		background-position: 0 -50px; }
+a.prev.disabled {	background-position: 0 -100px !important;  }
+a.next {			right: -22px;
+					background-position: -50px 0; }
+a.next:hover {		background-position: -50px -50px; }
+a.next.disabled {	background-position: -50px -100px !important;  }
+a.prev.disabled, a.next.disabled {
+	cursor: default;
+}
+
+a.prev span, a.next span {
+	display: none;
+}
+.pagination {
+	text-align: center;
+}
+.pagination a {
+	background: url(../../images/sprites/carouFred_sprite.png) 0 -300px no-repeat transparent;
+	width: 15px;
+	height: 15px;
+	margin: 0 5px 0 0;
+	display: inline-block;
+}
+.pagination a.selected {
+	background-position: -25px -300px;
+	cursor: default;
+}
+.pagination a span {
+	display: none;
+}
+.clearfix {
+	float: none;
+	clear: both;
 }

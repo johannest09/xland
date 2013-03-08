@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>CarouFred</title>
+		<meta charset="utf-8">
+		
+		<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700' rel='stylesheet' type='text/css' />
+		<link rel="stylesheet" type="text/css" href="stylesheets/less/main.css" />
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script src="javascript/lib.js" type="text/javascript"></script>
+
+
+	</head>
+	
+	<body>
+	
+	    <div id="foo2">
+		    <div>
+		        <h3>Infinity</h3>
+		        <p>A concept that in many fields refers to a quantity without bound or end.</p>
+		    </div>
+		    <div>
+		        <h3>Circular journey</h3>
+		        <p>An excursion in which the final destination is the same as the starting point.</p>
+		    </div>
+		    <div>
+		        <h3>jQuery</h3>
+		        <p>jQuery  is a cross-browser JavaScript library designed to simplify the client-side scripting.</p>
+		    </div>
+		    <div>
+		        <h3>Carousel</h3>
+		        <p>A carousel is an amusement ride consisting of a rotating circular platform with seats.</p>
+		    </div>
+		</div>
+
+		<div class="thumbs" style="">
+			<ul>
+				<li><a class="fancybox" rel="group" href="../images/resized/Retto-02.jpg"><img src="../images/thumbs/Retto-02.jpg"></a></li>
+				<li><a class="fancybox" rel="group" href="../images/resized/Retto-04.jpg"><img src="../images/thumbs/Retto-04.jpg"></a></li>
+				<li><a class="fancybox" rel="group" href="../images/resized/Retto-05.jpg"><img src="../images/thumbs/Retto-05.jpg"></a></li>
+			</ul>
+			<ul>
+				<li><a class="fancybox" rel="group" href="../images/resized/Retto-04.jpg"><img src="../images/thumbs/Retto-04.jpg"></a></li>
+				<li><a class="fancybox" rel="group" href="../images/resized/Retto-05.jpg"><img src="../images/thumbs/Retto-05.jpg"></a></li>
+			</ul>
+			<ul>
+				<li><a class="fancybox" rel="group" href="../images/resized/Retto-05.jpg"><img src="../images/thumbs/Retto-05.jpg"></a></li>
+			</ul>
+		</div>		
+		
+		<script src="javascript/map.js" type="text/javascript"></script>
+
+	</body>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#foo2").carouFredSel();
+		});
+	</script>
+</html>

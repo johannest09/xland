@@ -156,6 +156,22 @@ table {
   height: 0;
   clear: both;
   visibility: hidden;
+  *zoom: 1;
+  float: none;
+}
+.row:after:before,
+.clr:after:before,
+.group:after:before,
+.row:after:after,
+.clr:after:after,
+.group:after:after {
+  content: "";
+  display: table;
+}
+.row:after:after,
+.clr:after:after,
+.group:after:after {
+  clear: both;
 }
 .row {
   margin-bottom: 20px;
@@ -354,7 +370,7 @@ body {
   color: #2c2e2f;
   font-size: 14px;
 }
-body header {
+header {
   position: fixed;
   top: 30px;
   height: 75px;
@@ -365,35 +381,35 @@ body header {
   box-shadow: 0px 6px 4px 0px rgba(0, 0, 0, 0.2);
   background: url(/images/banner-bg.png);
 }
-body header .header-content {
+header .header-content {
   padding: 10px 0 25px;
 }
-body header .header-content .row {
+header .header-content .row {
   margin: 0;
 }
-body header .header-content .row .xland-logo {
+header .header-content .row .xland-logo {
   display: block;
   width: 180px;
   height: 103px;
   margin-top: -13px;
   background: url('/images/sprites/sprite.png') no-repeat;
 }
-body header .header-content .row .fila {
+header .header-content .row .fila {
   float: right;
 }
-body header .header-content .row nav {
+header .header-content .row nav {
   margin-top: 30px;
 }
-body header .header-content .row nav ul {
+header .header-content .row nav ul {
   list-style: none;
   height: 30px;
 }
-body header .header-content .row nav ul li {
+header .header-content .row nav ul li {
   display: inline;
   position: relative;
   margin: 0 5px;
 }
-body header .header-content .row nav ul li a {
+header .header-content .row nav ul li a {
   display: inline-block;
   padding: 5px 15px;
   font-weight: 600;
@@ -405,40 +421,40 @@ body header .header-content .row nav ul li a {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
 }
-body header .header-content .row nav ul li a.structure.active {
+header .header-content .row nav ul li a.structure.active {
   color: #f98253;
 }
-body header .header-content .row nav ul li a.public-space.active {
+header .header-content .row nav ul li a.public-space.active {
   color: #8ae0cf;
 }
-body header .header-content .row nav ul li a.competition.active {
+header .header-content .row nav ul li a.competition.active {
   color: #9475d1;
 }
-body header .header-content .row nav ul li a.history.active {
+header .header-content .row nav ul li a.history.active {
   color: #5db800;
 }
-body header .header-content .row nav ul li a.show-all.active {
+header .header-content .row nav ul li a.show-all.active {
   color: #8ae0cf;
 }
-body header .header-content .row nav ul li a.about.active {
+header .header-content .row nav ul li a.about.active {
   color: #e2a050;
 }
-body header .header-content .row nav ul li.active {
+header .header-content .row nav ul li.active {
   border: 2px solid white;
 }
-body .infowindow {
+.infowindow {
   width: 360px;
 }
-body .infowindow h2 {
+.infowindow h2 {
   font-weight: 600;
   font-size: 16px;
 }
-body .infowindow .marker-image {
+.infowindow .marker-image {
   max-width: 130px;
   float: left;
   margin-right: 10px;
 }
-body .infowindow a {
+.infowindow a {
   display: block;
   float: right;
   padding: 4px 6px;
@@ -447,10 +463,10 @@ body .infowindow a {
   background: #303030;
   color: #8ae0cf;
 }
-body .infowindow a:hover {
+.infowindow a:hover {
   background: #757575;
 }
-body .overlay {
+.overlay {
   display: none;
   width: 100%;
   height: 100%;
@@ -460,7 +476,7 @@ body .overlay {
   z-index: 300;
   background-color: rgba(16, 51, 51, 0.4);
 }
-body #project {
+#project {
   margin: 0 auto;
   margin-top: 170px;
   width: 960px;
@@ -468,146 +484,163 @@ body #project {
   z-index: 10;
   background: white;
 }
-body #project .panel-wrapper {
+#project .panel-wrapper {
   padding: 10px;
 }
-body #project .left-panel {
+#project .left-panel {
   position: relative;
   width: 20%;
   float: left;
   height: 650px;
   background: #333333;
-  color: white;
-  font-size: 12px;
+  color: #e6ebd7;
+  line-height: 14px;
+  font-size: 13px;
   /* box-shadow: inset -5px -2px 14px rgba(0, 0, 0, 0.4); */
 
 }
-body #project .left-panel .category-title {
+#project .left-panel .category-title {
   width: 100%;
   height: 40px;
   font-weight: 600;
   font-size: 16px;
   text-transform: uppercase;
 }
-body #project .left-panel .category-title span {
+#project .left-panel .category-title span {
   display: block;
   padding: 12px 5px 0 10px;
 }
-body #project .left-panel .project-thumb {
+#project .left-panel .project-thumb {
   margin-bottom: 10px;
 }
-body #project .left-panel .project-thumb img {
+#project .left-panel .project-thumb img {
   border: 1px solid white;
 }
-body #project .left-panel h3 {
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 6px;
-}
-body #project .left-panel .studio {
+#project .left-panel .studio {
   margin-bottom: 10px;
 }
-body #project .left-panel .studio a {
+#project .left-panel .studio a {
   color: white;
 }
-body #project .left-panel .studio ul li {
+#project .left-panel .studio ul li {
   padding: 2px 0;
 }
-body #project .left-panel .period {
+#project .left-panel .period {
   margin: 20px 0;
 }
-body #project .left-panel .period span {
+#project .left-panel .period span {
   margin-right: 5px;
   font-weight: bold;
   font-size: 16px;
 }
-body #project .left-panel .area-size,
-body #project .left-panel .cost {
+#project .left-panel .area-size,
+#project .left-panel .cost {
   width: 100%;
   float: left;
 }
-body #project .left-panel .area-size h3,
-body #project .left-panel .cost h3 {
+#project .left-panel .area-size h3,
+#project .left-panel .cost h3 {
   float: left;
   margin-right: 5px;
 }
-body #project .left-panel .area-size span,
-body #project .left-panel .cost span {
+#project .left-panel .area-size span,
+#project .left-panel .cost span {
   font-size: 14px;
 }
-body #project .left-panel .social-media {
+#project .left-panel a {
+  color: pink;
+}
+#project .left-panel h3 {
+  color: #8ae0d0;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+#project .left-panel ul {
+  list-style: none;
+}
+#project .left-panel ul li {
+  margin-bottom: 10px;
+}
+#project .left-panel ul ul li {
+  margin-bottom: 5px;
+}
+#project .left-panel .social-media {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 35px;
 }
-body #project .left-panel .social-media ul {
+#project .left-panel .social-media ul {
   margin-left: 10px;
 }
-body #project .left-panel .social-media ul li {
+#project .left-panel .social-media ul li {
   float: left;
   margin: 0 3px;
 }
-body #project .left-panel .social-media ul li a.facebook {
+#project .left-panel .social-media ul li a.facebook {
   display: block;
   width: 24px;
   height: 24px;
   background: url('/images/sprites/sprite.png') no-repeat;
   background-position: -64px -128px;
 }
-body #project .left-panel .social-media ul li a.twitter {
+#project .left-panel .social-media ul li a.twitter {
   display: block;
   width: 24px;
   height: 24px;
   background: url('/images/sprites/sprite.png') no-repeat;
   background-position: -32px -128px;
 }
-body #project .left-panel .social-media ul li a.google {
+#project .left-panel .social-media ul li a.google {
   display: block;
   width: 24px;
   height: 24px;
   background: url('/images/sprites/sprite.png') no-repeat;
   background-position: 0 -128px;
 }
-body #project .project-container {
-  width: 80%;
-  float: left;
-}
-body #project .project-container .top {
-  height: 40px;
-}
-body #project .project-container .top h1 {
-  float: left;
-  margin: 0 20px;
-  line-height: 40px;
-}
-body #project .project-container .top .buttons {
+#project .left-panel .buttons {
   float: right;
 }
-body #project .project-container .top .buttons .button {
-  width: 165px;
+#project .left-panel .buttons .button {
+  width: 145px;
   float: left;
-  padding: 7px 13px;
-  margin: 5px 10px;
-  background: #333333;
+  padding: 7px 10px;
+  margin: 5px 8px;
+  background: #8ae0d0;
   color: white;
   font-weight: bold;
   font-size: 16px;
 }
-body #project .project-container .top .buttons .button:hover {
+#project .left-panel .buttons .button:hover {
   background: #f98253;
 }
-body #project .project-container .top .buttons .button.selected {
+#project .left-panel .buttons .button.selected {
   background: #35b0c7;
 }
-body #project .project-container .top .buttons .button span.arrow {
+#project .left-panel .buttons .button span.arrow {
   float: right;
   width: 12px;
   height: 16px;
   background: url('/images/sprites/sprite.png') no-repeat -232px -72px;
 }
-body #project .project-container .top .buttons .closebtn {
+#project .project-container {
+  width: 80%;
+  height: 100%;
+  float: left;
+}
+#project .project-container .top {
+  height: 40px;
+  background: white;
+}
+#project .project-container .top h1 {
+  float: left;
+  margin: 0 20px;
+  line-height: 40px;
+  font-size: 22px;
+}
+#project .project-container .top .closebtn {
   float: right;
   width: 30px;
   height: 30px;
@@ -615,7 +648,7 @@ body #project .project-container .top .buttons .closebtn {
   position: relative;
   background-color: #333333;
 }
-body #project .project-container .top .buttons .closebtn:after {
+#project .project-container .top .closebtn:after {
   content: "x";
   position: absolute;
   top: 0;
@@ -623,55 +656,190 @@ body #project .project-container .top .buttons .closebtn:after {
   color: white;
   font-size: 25px;
 }
-body #project .project-container .top .buttons .closebtn:hover {
+#project .project-container .top .closebtn:hover {
   background: #f98253;
 }
-body #project .project-container .content {
-  position: relative;
-  height: 500px;
-}
-body #project .project-container .content.slides .forward,
-body #project .project-container .content.slides .back {
+#project .project-container .content.slides .forward,
+#project .project-container .content.slides .back {
   width: 30px;
   height: 30px;
   position: absolute;
   top: 50%;
 }
-body #project .project-container .content.slides .forward {
+#project .project-container .content.slides .forward {
   left: 10px;
   background: url(../../images/sprites/sprite.png) no-repeat -128px -128px;
   opacity: 0.8;
 }
-body #project .project-container .content.slides .forward:hover {
+#project .project-container .content.slides .forward:hover {
   background-position: -192px -128px;
 }
-body #project .project-container .content.slides .back {
+#project .project-container .content.slides .back {
   right: 10px;
   background: url(../../images/sprites/sprite.png) no-repeat -160px -128px;
   opacity: 0.8;
 }
-body #project .project-container .content.slides .back:hover {
+#project .project-container .content.slides .back:hover {
   background-position: -224px -128px;
 }
-body #project .project-container .content.description .text-wrapper {
-  height: 100%;
-  background: #cccccc;
+#project .project-container .content.slides .image img {
+  width: 100%;
+  height: 500px;
 }
-body #project .project-container .content.description .text-wrapper .text {
+#project .project-container .content.description .text-wrapper {
+  height: 550px;
+  margin: 20px;
+}
+#project .project-container .content.description .text-wrapper .text {
+  height: 500px;
   padding: 30px;
   color: #5e5e5e;
+  line-height: 1.3;
 }
-body #project .project-container .bottom {
+#project .project-container .thumbs {
+  width: 100%;
   height: 110px;
 }
-body #project .project-container .bottom .thumbs {
-  padding: 15px;
-}
-body #project .project-container .bottom .thumbs ul li {
+#project .project-container .thumbs li {
   float: left;
   margin: 0 5px;
+  display: block;
 }
-body #project .project-container .bottom .thumbs ul li img {
+#project .project-container .thumbs li img {
   width: 100px;
+  height: 68px;
+  border: 3px solid #e6ebd7;
+}
+/* Tiny Scrollbar */
+
+#scrollbar1 {
+  width: 100%;
+  height: 100%;
+  margin: 20px 0 10px;
+}
+#scrollbar1 .viewport {
+  width: 90%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+#scrollbar1 .overview {
+  list-style: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0;
+  margin: 0;
+}
+#scrollbar1 .scrollbar {
+  background: transparent url(../../images/bg-scrollbar-track-y2.png) no-repeat 0 0;
+  position: relative;
+  background-position: 0 0;
+  float: right;
+  width: 15px;
+}
+#scrollbar1 .track {
+  background: transparent url(../../images/bg-scrollbar-trackend-y.png) no-repeat 0 100%;
+  height: 100%;
+  width: 13px;
+  position: relative;
+  padding: 0 1px;
+}
+#scrollbar1 .thumb {
+  background: transparent url(../../images/bg-scrollbar-thumb-y.png) no-repeat 50% 100%;
+  height: 20px;
+  width: 25px;
+  cursor: pointer;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: -5px;
+}
+#scrollbar1 .thumb .end {
+  background: transparent url(../../images/bg-scrollbar-thumb-y.png) no-repeat 50% 0;
+  overflow: hidden;
+  height: 5px;
+  width: 25px;
+}
+#scrollbar1 .disable {
+  display: none;
+}
+.noSelect {
+  user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+}
+/* CarouFred */
+
+.thumbs {
+  padding: 15px 0 15px 40px;
+  position: relative;
+}
+.thumbs img {
   border: 1px solid #cccccc;
+  background-color: white;
+  padding: 9px;
+  margin: 7px;
+  display: block;
+  float: left;
+}
+a.prev,
+a.next {
+  background: url(../../images/sprites/carouFred_sprite.png) no-repeat transparent;
+  width: 45px;
+  height: 50px;
+  display: block;
+  position: absolute;
+  top: 85px;
+}
+a.prev {
+  left: -22px;
+  background-position: 0 0;
+}
+a.prev:hover {
+  background-position: 0 -50px;
+}
+a.prev.disabled {
+  background-position: 0 -100px !important;
+}
+a.next {
+  right: -22px;
+  background-position: -50px 0;
+}
+a.next:hover {
+  background-position: -50px -50px;
+}
+a.next.disabled {
+  background-position: -50px -100px !important;
+}
+a.prev.disabled,
+a.next.disabled {
+  cursor: default;
+}
+a.prev span,
+a.next span {
+  display: none;
+}
+.pagination {
+  text-align: center;
+}
+.pagination a {
+  background: url(../../images/sprites/carouFred_sprite.png) 0 -300px no-repeat transparent;
+  width: 15px;
+  height: 15px;
+  margin: 0 5px 0 0;
+  display: inline-block;
+}
+.pagination a.selected {
+  background-position: -25px -300px;
+  cursor: default;
+}
+.pagination a span {
+  display: none;
+}
+.clearfix {
+  float: none;
+  clear: both;
 }
