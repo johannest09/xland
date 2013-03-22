@@ -103,6 +103,48 @@
 		echo json_encode( $data );
 	}
 
+	function getProjectVideosById($id)
+	{
+		$connection = createConnection();
+
+		$sth = mysql_query("SELECT id, project_id, name, embed, embed_thumb, player FROM Videos WHERE project_id = $id");
+		$data = array();
+		while($r = mysql_fetch_assoc($sth)) 
+		{
+		    $data[] = $r;
+		}
+		closeConnection($connection);
+		echo json_encode( $data );
+	}
+
+	function getVideo($id)
+	{
+		$connection = createConnection();
+
+		$sth = mysql_query("SELECT embed FROM Videos WHERE id = $id");
+		$data = array();
+		while($r = mysql_fetch_assoc($sth)) 
+		{
+		    $data[] = $r;
+		}
+		closeConnection($connection);
+		echo json_encode( $data );
+	}
+
+	function getImageText($id)
+	{
+		$connection = createConnection();
+
+		$sth = mysql_query("SELECT imagetext FROM Images WHERE id = $id");
+		$data = array();
+		while($r = mysql_fetch_assoc($sth)) 
+		{
+		    $data[] = $r;
+		}
+		closeConnection($connection);
+		echo json_encode( $data );
+	}
+
 	if(isset($_POST['action']) && !empty($_POST['action'])) {
 	    $action = $_POST['action'];
 	    $id = $_POST['project_id'];
@@ -110,10 +152,11 @@
 	    switch($action) {
 	    	case 'getInfoWindowDataById' : getInfoWindowDataById($id); break;
 	    	case 'getProjectImagesById': getProjectImagesById($id); break;
+	    	case 'getProjectVideosById': getProjectVideosById($id); break;
+	    	case 'getVideo': getVideo($id); break;
+	    	case 'getImageText': getImageText($id); break;
 	        case 'getProjectById' : getProjectById($id); break;
 	    }
 	}
-
-
 
 ?>

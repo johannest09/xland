@@ -8,11 +8,20 @@
 @font-color-map: #667;
 
 /* Main colors */
+@web_color: #8ae0d0;
 @color_main_orange: #f98253;
 @color_main_lightgreen: #8ae0cf;
 @color_main_purple: #9475d1;
 @color_main_yellow: #e2a050;
 @color_main_green: #5db800;
+
+@nav-skipulag: #f98253;
+@nav-almenningsrymi: #8ae0cf;
+@nav-samkeppnir: #9475d1;
+@nav-saga: #e2a050;
+@nav-allt: #e7d6d3;
+@nav-about: #ce8375;
+
 
 
 /* graphics */
@@ -52,11 +61,12 @@ body, html, #map-canvas { width: 100%; height: 100%; }
 a { text-decoration: none; }
 p { margin: 0 0 10px; }
 h1 { font-size: 28px; }
+sup { vertical-align: super; font-size: 10px; }
 .wrap { width: 960px; margin: 0 auto; }
 
 h1, h2, h3, h4 { margin-bottom: 10px; }
 
-.clearfix() {*zoom:1; &:before, &:after { content:""; display:table; } &:after { clear:both; }}
+/* .clearfix() {*zoom:1; &:before, &:after { content:""; display:table; } &:after { clear:both; }} */
 
 
 /* =============================================================================
@@ -66,70 +76,72 @@ h1, h2, h3, h4 { margin-bottom: 10px; }
 body { position: relative; font-family: @font-main; color: @font-color-main; font-size: @font-size-main; }
 	
 header { position: fixed; top: 30px; height: 75px; width: 100%; z-index: 10; .box-shadow(0px 6px 4px 0px rgba(0,0,0,0.2)); background: url(/images/banner-bg.png);
-	.header-content { padding: 10px 0 25px; 
-		.row { margin: 0; 
-			.xland-logo { display: block; width: 180px; height: 103px; margin-top: -13px; background: url(@spritePath) no-repeat; }
-			.fila { float: right; }
-			nav { margin-top: 30px;
-				ul { list-style: none; height: 30px; 
-					li { display: inline; position: relative; margin: 0 5px; 
-						a { display: inline-block; padding: 5px 15px; font-weight: 600; color: #fff; .rounded(2px);  
-							&.structure.active { color: @color_main_orange; }
-							&.public-space.active { color: @color_main_lightgreen; }
-							&.competition.active { color: @color_main_purple; }
-							&.history.active { color: @color_main_green; }
-							&.show-all.active { color: @color_main_lightgreen; }
-							&.about.active { color: @color_main_yellow; }
+	.header-content { height: 75px;
+		.xland-logo { display: block; width: 180px; height: 103px; float: left; margin-top: -3px; background: url(@spritePath) no-repeat; }
+		.fila { float: right; margin-top: 8px; }
+		nav { width: 600px; height: 20px; float: left; margin: 50px 10px 0 85px;
+			ul { list-style: none; 
+				li { display: inline; position: relative;
+					a { display: inline-block; padding: 0 12px; font-weight: 600; color: #fff; font-size: 13px;  
+						&.structure.active { color: @nav-skipulag; }
+						&.public-space.active { color: @nav-almenningsrymi; }
+						&.competition.active { color: @nav-samkeppnir; }
+						&.history.active { color: @nav-saga; }
+						&.show-all.active { color: @nav-allt; }
+						&.about.active { color: @nav-about; }
 
-						}
-
-						&.active { border: 2px solid #fff; }
-						
-						
 					}
+					&.active { border: 2px solid #fff; }
 				}
 			}
 		}
 	}
 }
-.infowindow { width: 360px;
+.overflow { position: relative; }
+.infowindow { width: 360px; margin-bottom: 22px;
 	h2 { font-weight: 600; font-size: 16px; }
 	.marker-image { max-width: 130px; float: left; margin-right: 10px; }
-	a { display: block; float: right; padding: 4px 6px; font-size: 15px; font-weight: 500; background: #303030; color: @color_main_lightgreen; 
+	a { position: absolute; bottom: 0; right: 0; display: block; padding: 4px 6px; font-size: 15px; font-weight: 500; background: #303030; color: @color_main_lightgreen; 
 		&:hover { background: #757575; }
 	}
 }
 
 .overlay { display: none; width: 100%; height: 100%; position: absolute; left: 0; top: 0; z-index: 300; background-color: rgba(16, 51, 51, 0.4); }
-#project {  margin: 0 auto; margin-top: 170px; width: 960px; height: 650px; z-index: 10; background: #fff;
-	.panel-wrapper { padding: 10px; }
-	.left-panel { position: relative; width: 20%; float: left; height: 650px; background: #333; color: #e6ebd7; line-height: 14px; font-size: 13px; /* box-shadow: inset -5px -2px 14px rgba(0, 0, 0, 0.4); */
+#project {  margin: 0 auto; margin-top: 160px; width: 960px; height: 650px; z-index: 10; background: #fff; border: 5px solid #fff; border-radius: 5px; -moz-border-radius: 5px;
+	.panel-wrapper { padding: 10px; margin-bottom: 20px; }
+	.left-panel { position: relative; width: 220px; float: left; height: 650px; background: #2E2E2E; color: #fff; line-height: 14px; font-size: 13px; /* box-shadow: inset -5px -2px 14px rgba(0, 0, 0, 0.4); */
 		.category-title { width: 100%; height: 40px; font-weight: 600; font-size: 16px; text-transform: uppercase;
 			span { display: block; padding: 12px 5px 0 10px; }
 		}
 		.project-thumb { margin-bottom: 10px; 
-			img { border: 1px solid #fff; }
+			img { border: 1px solid #fff; max-height: 100px; margin-left: 10px; }
 		}
 		.studio { margin-bottom: 10px;
 			a { color: #fff; }				
 			ul li { padding: 2px 0; }
 		}
 		.period {margin: 20px 0; 
-			span { margin-right: 5px; font-weight: bold; font-size: 16px; }
+			> span { margin-left: 0; }
+			span { margin: 3px; font-weight: 500; font-size: 16px; 
+				&.in-progress { font-weight: normal; }
+			}
 		}
-		.area-size, .cost { width: 100%; float: left; 
+		.area-size { width: 100%; float: left; 
 			h3 { float: left; margin-right: 5px; }
-			span { font-size: 14px; }
+			span { font-size: 14px; line-height: 10px; }
 		}
+		.studio-details { margin-bottom: 15px;
+			li a { color: #A1B0EA; }
+			li.website, li.email { margin-bottom: 2px; }
+		} 
 
-		a { color: pink; }
-		h3 { color: #8AE0D0; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+		h3 { color: @web_color; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
 		ul { list-style: none;
 			li { margin-bottom: 10px; }
-			ul li { margin-bottom: 5px; }
+			//ul li { margin-bottom: 5px; }
 		}
 
-		.social-media { position: absolute; bottom: 0; left: 0; width: 100%; height: 35px;
+		.social-media { display: none; position: absolute; bottom: 0; left: 0; width: 100%; height: 35px;
 			ul { margin-left: 10px; 
 				li { float: left; margin: 0 3px; 
 					a.facebook { display: block; width: 24px; height: 24px; background: url('/images/sprites/sprite.png') no-repeat; background-position: -64px -128px; }
@@ -139,26 +151,23 @@ header { position: fixed; top: 30px; height: 75px; width: 100%; z-index: 10; .bo
 			} 
 		}
 
-		.buttons { float: right;
-			.button { width: 145px; float: left; padding: 7px 10px; margin: 5px 8px; background: #8ae0d0; color: #fff; font-weight: bold; font-size: 16px; 
+		.buttons { position: absolute; bottom: 20px; left: 10px;
+			.button { width: 145px; float: left; padding: 7px 10px; margin: 7px 0; background: #A8BBB7; color: #2E2E2E; font-weight: bold; font-size: 16px; 
 				&:hover {
-					background: @color_main_orange;
+					//background: @color_main_orange;
 				}
-				&.selected { background: #35b0c7; }	
+				&.selected { background: @web_color; }	
 				span.arrow { float: right; width: 12px; height: 16px; background: url('/images/sprites/sprite.png') no-repeat -232px -72px; } 
 			}
 			
 		}
-		
-
 	}
-	.project-container { width: 80%; height: 100%; float: left;
+	.project-container { width: 725px; margin-right: 5px; height: 100%; float: right;
 		.top { height: 40px; background: #fff;
-			h1 { float: left; margin: 0 20px; line-height: 40px; font-size: 22px; }
-			.closebtn { float: right; width: 30px; height: 30px; margin: 5px 10px 0 10px; position: relative; background-color: #333;
-				&:after { content:"x"; position: absolute; top: 0; left: 8px; color: #fff; font-size: 25px; }
+			h1 { float: left; margin: 0 5px; line-height: 40px; font-size: 22px; }
+			.closebtn { display: block; float: right; width: 32px; height: 32px; margin-top: 2px; background: url('/images/sprites/sprite.png') no-repeat -192px -160px;
 				&:hover {
-					background: @color_main_orange;
+					background-position: -224px -160px;
 				}
 			}
 		}
@@ -171,21 +180,56 @@ header { position: fixed; top: 30px; height: 75px; width: 100%; z-index: 10; .bo
 				.back { right: 10px; background: url(../../images/sprites/sprite.png) no-repeat -160px -128px; opacity: 0.8; 
 					&:hover { background-position: -224px -128px; }
 				}
-				.image img { width: 100%; height: 500px; }
+				.image { position: relative; background: #333;
+					img { width: 100%; height: 480px; } 
+					.infobox { position: absolute; bottom: 10px; right: 10px; font-style: italic; 
+						&.open { width: 250px; min-height: 25px; border-radius: 3px; background: #fff; padding: 8px; border: 3px solid #ccc; box-shadow: 0px 0px 6px #333;
+							.info-closebtn { display: block; }
+							.infosym { display: none; }
+							.infotext { display: block; width: 210px; float: left; }
+						}
+						.infotext { display: none; }
+						.info-closebtn { display: none; width: 32px; height: 32px; float: right; opacity: 0.5; background: url('/images/sprites/sprite.png') no-repeat -192px -160px; }
+						.infosym { display: block; width: 32px; height: 32px; background: url('/images/sprites/sprite.png') no-repeat -224px -96px; }
+					}
+				}
 			}
 			&.description {
-				.text-wrapper { height: 550px; margin: 20px;
+				.text-wrapper { height: 550px; margin: 20px; font-size: 15px; line-height: 1.4;
 					.text { height: 500px; padding: 30px; color: #5e5e5e; line-height: 1.3; }
+					b { font-weight: 600; }
+					i { font-weight: italic; }
 				}
 			}
 			
 		}
-		.thumbs { width: 100%; height: 110px; 
+		/* .thumbs { width: 100%; height: 110px; 
 			li { float: left; margin: 0 5px; display: block;
 				img { width: 100px; height: 68px; border: 3px solid #e6ebd7; }
 			} 
-		}
+		} */
 		
+	}
+	
+}
+#about { display: none; margin: 0 auto; margin-top: 10%; width: 960px; height: 650px; z-index: 10; background: #fff; border: 3px solid #fff; border-radius: 5px;
+	.top { height: 40px; background: #fff;
+		h1 { float: left; margin: 0 5px 0 5px; line-height: 40px; font-size: 22px; font-weight: 500; }
+		.closebtn { float: right; width: 30px; height: 30px; margin: 5px 10px 0 10px; position: relative; background-color: #333;
+			&:after { content:"x"; position: absolute; top: 0; left: 8px; color: #fff; font-size: 25px; }
+			&:hover {
+				background: @color_main_orange;
+			}
+		}
+	}
+	.about-content { margin: 0 45px; line-height: 1.4; 
+		h1 { font-weight: 500; }
+		h2 { font-size: 18px; font-weight: 500; }
+		ul { list-style: disc; padding-left: 40px; margin-bottom: 20px; 
+			li { margin: 8px 0; 
+				a { text-decoration: underline; color: #333; }
+			}
+		}
 	}
 }
 
@@ -196,40 +240,41 @@ header { position: fixed; top: 30px; height: 75px; width: 100%; z-index: 10; .bo
 #scrollbar1 .scrollbar{ background: transparent url(../../images/bg-scrollbar-track-y2.png) no-repeat 0 0; position: relative; background-position: 0 0; float: right; width: 15px; }
 #scrollbar1 .track { background: transparent url(../../images/bg-scrollbar-trackend-y.png) no-repeat 0 100%; height: 100%; width:13px; position: relative; padding: 0 1px; }
 #scrollbar1 .thumb { background: transparent url(../../images/bg-scrollbar-thumb-y.png) no-repeat 50% 100%; height: 20px; width: 25px; cursor: pointer; overflow: hidden; position: absolute; top: 0; left: -5px; }
-#scrollbar1 .thumb .end { background: transparent url(../../images/bg-scrollbar-thumb-y.png) no-repeat 50% 0; overflow: hidden; height: 5px; width: 25px; }
+#scrollbar1 .thumb .end { display: none; background: transparent url(../../images/bg-scrollbar-thumb-y.png) no-repeat 50% 0; overflow: hidden; height: 5px; width: 25px; }
 #scrollbar1 .disable { display: none; }
 .noSelect { user-select: none; -o-user-select: none; -moz-user-select: none; -khtml-user-select: none; -webkit-user-select: none; }
 
 /* CarouFred */
 
-.thumbs {
-	padding: 15px 0 15px 40px;
-	position: relative;
+.thumbs { padding: 18px 35px 5px 35px; position: relative;
+	li { float: left; display: block; }
 }
 .thumbs img {
+	width: 110px;
+	height: 80px;
 	border: 1px solid #ccc;
 	background-color: white;
-	padding: 9px;
-	margin: 7px;
+	padding: 4px;
+	margin: 0 4px;
 	display: block;
 	float: left;
 }
 a.prev, a.next {
-	background: url(../../images/sprites/carouFred_sprite.png) no-repeat transparent;
-	width: 45px;
-	height: 50px;
+	background: url(../../images/sprites/sprite.png) no-repeat transparent;
+	width: 32px;
+	height: 32px;
 	display: block;
 	position: absolute;
-	top: 85px;
+	top: 48px;
 }
-a.prev {			left: -22px;
-					background-position: 0 0; }
-a.prev:hover {		background-position: 0 -50px; }
-a.prev.disabled {	background-position: 0 -100px !important;  }
-a.next {			right: -22px;
-					background-position: -50px 0; }
-a.next:hover {		background-position: -50px -50px; }
-a.next.disabled {	background-position: -50px -100px !important;  }
+a.prev {			left: 0;
+					background-position: 0 -160px; }
+a.prev:hover {		background-position: -64px -160px; }
+a.prev.disabled {	background-position: -128px -160px !important;  }
+a.next {			right: 0;
+					background-position: -32px -160px; }
+a.next:hover {		background-position: -96px -160px; }
+a.next.disabled {	background-position: -160px -160px !important;  }
 a.prev.disabled, a.next.disabled {
 	cursor: default;
 }
@@ -241,7 +286,7 @@ a.prev span, a.next span {
 	text-align: center;
 }
 .pagination a {
-	background: url(../../images/sprites/carouFred_sprite.png) 0 -300px no-repeat transparent;
+	background: url(../../images/sprites/sprite.png) 0 -300px no-repeat transparent;
 	width: 15px;
 	height: 15px;
 	margin: 0 5px 0 0;
@@ -258,3 +303,17 @@ a.prev span, a.next span {
 	float: none;
 	clear: both;
 }
+
+
+/* Tiny Scrollbar */
+#scrollbar2 .scrollbar-wrap { margin: 0 5px 0 5px;  }
+#scrollbar2 { width: 220px; height: 340px; margin: 20px 0 10px; }
+#scrollbar2 .viewport { width: 165px; height: 340px; margin: 10px 8px; overflow: hidden; position: relative; }
+#scrollbar2 .overview { height: 340px; list-style: none; position: absolute; left: 0; top: 0; padding: 0; margin: 0; }
+#scrollbar2 .scrollbar { height: 100%; background: transparent url(../../images/bg-scrollbar-track-y2.png) no-repeat 0 0; position: relative; background-position: 0 0; float: right; width: 15px; }
+#scrollbar2 .track { background: transparent url(../../images/bg-scrollbar-trackend-y.png) no-repeat 0 100%; height: 100%; width:13px; position: relative; padding: 0 1px; }
+#scrollbar2 .thumb { background: transparent url(../../images/bg-scrollbar-thumb-y.png) no-repeat 50% 100%; height: 20px; width: 25px; cursor: pointer; overflow: hidden; position: absolute; top: 0; left: -5px; }
+#scrollbar2 .thumb .end { display: none; background: transparent url(../../images/bg-scrollbar-thumb-y.png) no-repeat 50% 0; overflow: hidden; height: 5px; width: 25px; }
+#scrollbar2 .disable { display: none; }
+.noSelect { user-select: none; -o-user-select: none; -moz-user-select: none; -khtml-user-select: none; -webkit-user-select: none; }
+

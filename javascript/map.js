@@ -5,13 +5,21 @@
  * @author Jóhannes Freyr Þorleifsson
  * @copyright (c) 2012
  */
-
-var defaultZoom = 12;
-var defaultLatlng = new google.maps.LatLng(64.138621,-21.894722);
+// 64.138621,-21.894722
+var defaultZoom = 11;
+var defaultLatlng = new google.maps.LatLng(64.152123,-21.816328);
 var infowindow;
 var markerList = {};
 var map;
 var mapStyle = "/mapstyle.js";
+
+var map;
+var overlay;
+MyOverlay.prototype = new google.maps.OverlayView();
+MyOverlay.prototype.onAdd = function() { }
+MyOverlay.prototype.onRemove = function() { }
+MyOverlay.prototype.draw = function() { }
+function MyOverlay(map) { this.setMap(map); }
 
 var xland = {
 	
@@ -44,9 +52,9 @@ var xland = {
 		};
 		
 		map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
-		
+		overlay = new MyOverlay(map);
 		// create new info window for marker detail pop-up
-		infowindow = new google.maps.InfoWindow();
+		infowindow = new google.maps.InfoWindow({disableAutoPan: true});
 		return map;
 	},
 
@@ -63,6 +71,7 @@ var xland = {
 
 	loadMarker : function(markerData)
 	{
+
 		var location = markerData.lat_long.split(",");
 		var lat = location[0];
 		var lng = location[1];
@@ -100,6 +109,7 @@ var xland = {
 		    title: markerData["project_name"],
 		    category: markerData["project_type"],
 		    position: Latlng,
+		    animation: google.maps.Animation.DROP,
 		    icon: markerColor
 		});
 
@@ -109,16 +119,18 @@ var xland = {
 		// add event listener when marker is clicked
 		// currently the marker data contain a dataurl field this can of course be done different
 		google.maps.event.addListener(marker, 'click', function() {
-			// show marker when clicked
-			map.panTo(marker.position);
+
+			var newCenter = overlay.getProjection().fromLatLngToContainerPixel(marker.position);
+			newCenter.y -= 100;
+			newCenter = overlay.getProjection().fromContainerPixelToLatLng(newCenter);
 			MapContainer.showInfoWindow(marker.id);
+			map.panTo(newCenter);
 		});
 
 		// add event when marker window is closed to reset map location
-		
 		google.maps.event.addListener(infowindow,'closeclick', function() {
 			//map.setCenter(defaultLatlng);
-			//map.setZoom(defaultZoom);
+			//map.setZoom(defualtZoom);
 		});
 		
 	},
@@ -131,17 +143,14 @@ var xland = {
 		        data: {action: 'getInfoWindowDataById', project_id: markerId },
 		        type: 'post',
 		        success: function(result) {
-		                	//console.log(result);
 		                	var data = $.parseJSON(result);
-							var html = '<div class="infowindow"><h2>' + data['project']['project_name'] + '</h2><img src="../images/thumbs/' + data['image'] + '" class="marker-image"></img><p>' + data['project']['abstract'].substring(0, 120) + ' ...</p><a href="javascript:void(0);" rel="' + data['project']['id'] + '" title="Nánar um verkefni" class="more">Skoða verkefni</a> </div>';
+		                	var imagenamefix = data['image'].replace(/ /g,"-").replace("JPG", "jpg").replace("jpeg", "jpg");
+							var html = '<div class="infowindow"><h2>' + data['project']['project_name'] + '</h2><img src="../images/thumbs/' + imagenamefix + '" class="marker-image"></img><p>' + data['project']['abstract'].substring(0, 200) + ' ...</p><a href="javascript:void(0);" rel="' + data['project']['id'] + '" title="Nánar um verkefni" class="more">Skoða verkefni</a> </div>';
 		                	infowindow.setContent(html);
 							infowindow.open(map, marker);
 		                }
 		});
 
-
-		// get marker information from marker list
-		
 	},
 
 	navigationFilter : function()
@@ -149,14 +158,15 @@ var xland = {
 		$("nav ul li a").bind("click", function(){
 		
 			var current = $(this);
-			xland.showCategory($(this).attr("rel"));
-
 			$("nav ul li a").each(function(){
 				$(this).removeClass("active");
 			});
-
 			$(current).addClass("active");
 
+			if( !( $(this).attr("rel") == "about" ) )
+			{
+				xland.showCategory($(this).attr("rel"));
+			}
 			return false;
 		});
 	},
@@ -165,17 +175,17 @@ var xland = {
 	{
 		for(id in markerList)
 		{
-			/*
-			console.log(markerList[id]);
-			console.log("____")
-			console.log(category)
-			console.log(markerList[id].category);
-			console.log(typeof(markerList[id].category))
-			console.log("____")
-			*/
-
-			if(category == "show-all" || markerList[id].category == category){
+			if(category == "show-all" || markerList[id].category == category) 
+			{
 				markerList[id].setMap(map);
+
+				if(category == "show-all")
+				{
+					$("nav ul li a").each(function() {
+						if(!$(this).hasClass("about")) 
+							$(this).addClass("active");
+					});
+				}
 			}
 			else{
 				markerList[id].setMap(null);
@@ -186,41 +196,21 @@ var xland = {
 	showProject: function(id)
 	{
 		$(".overlay").show();
-		var project = $(".overlay");
-
+		$("#project").show();
 
      	$.ajax({ url: '/server.php',
 	        data: {action: 'getProjectById', project_id: id },
 	        type: 'post',
 	        success: function(result) {
-	                	//console.log(result);
-	                	var obj = $.parseJSON(result);
-	                	console.log(obj);
-	                	//console.log(obj[0].contact_person);
-	                	project.find(".category-title").html('<span>' + obj[0].project_type + '</span>');
-	                	project.find("h1").html(obj[0].project_name);
-	                	project.find(".overview").html(obj[0].description);
+	                	var obj = $.parseJSON(result);	                	
+	                	/* insert */
+
+	                	$(".category-title").html('<span>' + obj[0].project_type + '</span>');
+	                	$(".top h1").html(obj[0].project_name);
+	                	$("#scrollbar1 .overview").html(obj[0].description);
 
 	                	$(".project-name").html(obj[0].name);
 	                	$(".location").html(obj[0].location);
-	                	$(".product-owner").html('<h3>Eigandi verkefnis</h3><span>' + obj[0].product_owner + '</span>');
-	                	
-	                	if(obj[0].project_finished != 0)
-	                	{
-	                		$(".period").html('<span>' + obj[0].project_started + '</span> - <span>' + obj[0].project_finished + '</span>');
-	                	}
-	                	else if(obj[0].project_started != 0)
-	                	{
-	                		$(".period").html('<span>' + obj[0].project_started + '</span>');
-	                	}
-	                	
-	                	$(".size").html(Math.round(obj[0].area_size));
-	                	var scale = obj[0].scale;
-	                	var scaleabbr = getScale(scale);
-	                	$(".scale").html(scaleabbr);
-
-	                	$(".cost").html(obj[0].capital_cost);
-	                	
 	                	$(".studio-name").html(obj[0].studio);
 	                	$(".address").html(obj[0].studio_address);
 	                	$(".website").html('<a href="' + obj[0].website + '">' + obj[0].website + '</a>');
@@ -232,10 +222,59 @@ var xland = {
 	                		$(".affiliates").html(affiliates);
 	                	}
 
+	                	var projectData = "";
+	                	if(obj[0].project_finished != 0)
+	                	{
+	                		projectData += '<li class="period" ><span>' + obj[0].project_started + '</span> - <span>' + obj[0].project_finished + '</span></li>';
+	                	}
+	                	else if(obj[0].project_started != 0)
+	                	{
+	                		if(obj[0].in_progress != 0)
+	                		{
+								projectData += '<li class="period" ><span>' + obj[0].project_started + '</span> - <span class="in-progress">Í vinnslu</span></li>';
+	                		}
+	                		else
+	                		{
+	                			projectData += '<li class="period" ><span>' + obj[0].project_started + '</span></li>';
+	                		}
+	                	}
+	                	if(obj[0].area_size != 0)
+	                	{
+	                		var scale = obj[0].scale;
+	                		var scaleabbr = getScale(scale);
+	                		projectData += '<li class="area-size"><h3>Stærð</h3><span class="size">' + parseFloat(obj[0].area_size) + '</span><span class="scale">' + scaleabbr +'</span></li>';
+	                	}
+	                	if(obj[0].capital_cost != 0)
+	                	{
+	                		projectData += '<li class="project-cost"><h3>Kostnaður</h3><span class="cost">' + obj[0].capital_cost + '</span></li>';
+	                	}
+	                	$("li.data ul").html(projectData);	
+	                	
+	                	$(".project-owner").html('<h3>Verkkaupi</h3><span>' + obj[0].product_owner + '</span>');
+
+	                	if(obj[0].product_owner != "")
+	                	{
+	                		$(".project-owner").show();
+							$(".project-owner").html('<h3>Verkkaupi</h3><span>' + obj[0].product_owner + '</span>');
+	                	}
+	                	else
+	                	{
+	                		$(".project-owner").hide();
+	                	}
+	                	if(obj[0].contractor != "")
+	                	{
+	                		$(".contractor").show();
+	                		$(".contractor").html('<h3>Framkvæmdaraðili</h3><span>' + obj[0].contractor + '</span>');
+	                	}
+	                	else
+	                	{
+	                		$(".contractor").hide();
+	                	}
+
 	                	$(".image").show();
 	                	$(".thumbs").show();
 	                	$(".text-wrapper").hide();
-
+	                	$("#scrollbar2").tinyscrollbar_update();
 	                }
 		});
 
@@ -244,27 +283,19 @@ var xland = {
 			type: 'post',
 			success: function(result) {
 						var obj = $.parseJSON(result);
-						$(".thumbs").empty();
 						var list = "";
 						$.each(obj, function(i, image){
-							
-							if(image["is_primary"] == 0)
-							{
-								list += '<li><a href="#" rel="group" data="' + image["name"] + '"><img src="../images/thumbs/' + image["name"] + '" /></a></li>';
-							}
+							var imagenamefix = image["name"].replace(/ /g,"-").replace("JPG", "jpg").replace("jpeg", "jpg");
+							list += '<li><a class="fancybox" href="../images/resized/' + imagenamefix + '" rel="group" data="' + imagenamefix + '"><img src="../images/thumbs/' + imagenamefix + '" rel="' + image["id"] + '"/></a></li>';
 							if(image["is_primary"] == 1)
 							{
-								var main_image = '<a href="javascript:void(0); title="' + image["name"] + '"><img src="../images/resized/' + image["name"] + '" alt="' + image["name"] + '" /></a>'; 
-								$(".primary").html(main_image);
-								$(".image-text").html(image["image_text"]);
-
-								var thumb = '<img src="../images/thumbs/' + image["name"] + '" alt="' + image["name"] + '" />'; 
-								var image = '<a class="fancybox" rel="group" href="../images/resized/' + image["name"] + '"><img src="../images/resized/' + image["name"] + '" alt="' + image["name"] + '" /></a>'; 
+								var thumb = '<img src="../images/thumbs/' + imagenamefix + '" alt="' + imagenamefix + '" />'; 
 								$(".project-thumb").html(thumb);
-								$(".image").html(image);
+								var mainImage = '<a class="fancybox" rel="group" href="../images/resized/' + imagenamefix + '" style="display: block; background: url(\'/images/resized/' + imagenamefix + '\') no-repeat; width: 725px; height: 480px; background-position: 100% 100%; background-size: cover;"></a>';
+								$(".image").html(mainImage);
 							}
 						});
-						$(".thumbs").html('<ul>' + list + '</ul><a class="prev" id="prev" href="#"><span>prev</span></a><a class="next" id="next" href="#"><span>next</span></a><div class="pagination" id="pag"></div>');
+						$(".thumbs ul").html(list);
 						$(".thumbs ul").carouFredSel({
 							circular: false,
 							infinite: false,
@@ -279,22 +310,56 @@ var xland = {
 							},
 							pagination	: "pag"
 						});
-
 						$(".thumbs ul li a").bind("click", function(){
-					 		console.log(this);
 					 		var selectedImage = $(this).attr("data");
-					 		console.log(selectedImage);
-					 		var image = '<a class="fancybox" rel="group" href="../images/resized/' + selectedImage + '"><img src="../images/resized/' + selectedImage + '" alt="' + selectedImage + '" /></a>'; 
-					 		$(".image").html(image);
+					 		var imageId = $(this).find("img").attr("rel");
+					 		var mainImage = '<a class="fancybox" rel="group" href="../images/resized/' + selectedImage + '" style="display: block; background: url(\'/images/resized/' + selectedImage + '\') no-repeat; width: 725px; height: 480px; background-position: 100% 100%; background-size: cover;"></a>';
+					 		$(".image").html(mainImage);
+					 		getImageText(imageId);
+					 		return false;
 					 	});
 			}
-		}); 
+
+		});
+		
+		$.ajax({ url: 'server.php',
+			data: { action: 'getProjectVideosById', project_id: id },
+			type: 'post',
+			success: function(result) {
+				var obj = $.parseJSON(result);
+				var videoList ="";
+				$.each(obj, function(i, video){
+					videoList += '<li><a class="video" href="javascript:void(0);" class="" data="' + video["id"] + '"><img src="../images/play.png" /></a></li>';
+				});
+				$(".thumbs ul").append(videoList);
+				$(".thumbs ul").carouFredSel({
+					circular: false,
+					infinite: false,
+					auto: false,
+					prev	: {
+						button	: "#prev",
+						key		: "left"
+					},
+					next	: {
+						button	: "#next",
+						key		: "right"
+					},
+					pagination	: "pag"
+				});
+				$(".thumbs ul li a.video").bind("click", function(){
+					var selectedVideoId = $(this).attr("data");
+					getVideoById(selectedVideoId);
+					return false;
+				})
+			}
+		});
+
 	}
 };
 
 $(document).ready(function(){
-
-	$(".fancybox").fancybox(
+	$("#scrollbar2").tinyscrollbar();
+	$("a.fancybox").attr('rel', 'group1').fancybox(
 		{
 			maxWidth	: 960,
 			maxHeight	: 800,
@@ -302,7 +367,11 @@ $(document).ready(function(){
 			height 		: '100%',
 			autosize	: false,
 			fitToView	: false,
-			padding : 0,
+			padding 	: 0,
+			transitionIn: 'elastic',
+			transitionOut: 'elastic',
+			speedIn		: 600,
+			speedOut	: 200,
 
 			helpers : {
 		        overlay : {
@@ -313,7 +382,6 @@ $(document).ready(function(){
 		    }
 		}
 	);
-
 
 	google.maps.event.addListenerOnce(xland.loadMap(), 'idle', function(){
 		xland.navigationFilter();
@@ -326,15 +394,40 @@ $(document).ready(function(){
 			var id = $(this).attr("rel");
 			xland.showProject(id);
 		});
+
  	});
 
- 	$(".overlay .closebtn").bind("click", function(){
+ 	$(".overlay #project .closebtn").bind("click", function(){
  		$(".overlay").hide();
  		$(".content").removeClass("description");
  		$(".content").addClass("slides");
+ 		
+ 		/* Cleanup */
  		$(".text-wrapper .text").empty();
- 		$(".image").empty();
- 		$(".thumbs").empty();
+    	$(".category-title").empty();
+    	$(".top h1").empty();
+    	$("#scrollbar1 .overview").empty();
+    	$(".project-name").empty();
+    	$(".location").empty();
+    	$(".studio-name").empty();
+    	$(".address").empty();
+    	$(".website").empty();
+    	$(".email").empty();
+    	$(".affiliates").empty();
+    	$("li.data ul").empty();
+    	$(".project-owner").empty();
+    	$(".image").empty();
+ 		$(".thumbs ul").empty();
+ 		$(".project-thumb").empty();
+ 		$(".contractor").empty();
+ 		$(".infobox").remove();
+
+ 	});
+
+ 	$(".overlay #about .closebtn").bind("click", function(){
+ 		$(".overlay").hide();
+ 		$("#about").hide();
+ 		$("nav ul li a.about").removeClass("active");
  	});
 
  	$(".button").bind("click", function() {
@@ -368,6 +461,13 @@ $(document).ready(function(){
  		}
  	});
 
+ 	$("nav .about").bind("click", function(){
+ 		$(".overlay").show();
+ 		$("#project").hide();
+ 		$("#about").show();
+ 		return false;
+ 	});
+
 });
 
 function getScale(scale)
@@ -376,11 +476,49 @@ function getScale(scale)
 	switch(scale)
 	{
 		case "fermetrar":
-			abbr = "m<sup>2</sup>";
+			abbr = " m<sup>2</sup>";
 			break;
 		case "hektarar":
-		    abbr = "ha";
+		    abbr = " ha";
 		    break;
 	}
 	return abbr;	
+}
+
+function getVideoById(id) {
+	$.ajax({ url: '/server.php',
+		data: { action: 'getVideo', project_id: id },
+		type: 'post',
+		success: function(result) {
+			var obj = $.parseJSON(result);
+			$(".image").html(obj[0].embed);
+		}
+	});
+}
+
+function getImageText(id)
+{
+	$.ajax({ url: '/server.php',
+		data: { action: 'getImageText', project_id: id },
+		type: 'post',
+		success: function(result) {
+			var obj = $.parseJSON(result);
+			var imagetext = obj[0].imagetext;
+			if(imagetext)
+			{
+				$(".infobox").remove();
+				var infoboxhtml = '<div class="infobox"><span class="infotext">' + imagetext + '</span><a href="#" class="info-closebtn"></a><a href="#" class="infosym" title="Skoða myndatexta"></a></div>';
+				$(".image").append(infoboxhtml);
+					$(".infosym").bind("click", function(){
+						$(".infobox").addClass("open");
+						return false;
+					});
+					$(".info-closebtn").bind("click", function(){
+						$(".infobox").removeClass("open");
+						return false;
+					});
+				}
+			}
+			
+	});
 }
